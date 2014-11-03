@@ -4,23 +4,8 @@ using System.Collections;
 public class DuckControll : MonoBehaviour {
 
 	bool started = false;
-
-	// Use this for initialization
-	void Start () {
-
-	}
 	
 	public void StartGame () {
-
-		GameObject aim = GameObject.Find( "Aim" );
-		GameObject timer = GameObject.Find( "Timer" );
-		
-		AimControll aimControll = aim.GetComponent<AimControll>();
-		TimerControll timerControll = timer.GetComponent<TimerControll>();
-		
-		aimControll.StartGame();
-		timerControll.StartGame();
-
 		started = true;
 	}
 
@@ -28,16 +13,7 @@ public class DuckControll : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		GameObject player = GameObject.Find( "Pato" );
 		Vector3 target;
-
-		if( !started ) {
-
-			// No primeiro toque começa o jogo
-			if ( Input.GetMouseButtonDown (0) ) {
-				StartGame();
-			}
-		}
 
 		// Ainda nao clicou no ecra
 		if( !started ) {
@@ -45,7 +21,8 @@ public class DuckControll : MonoBehaviour {
 		}
 
 		if ( Input.GetMouseButtonDown (0) ) {
-			
+
+			GameObject player = GameObject.Find( "Duck" );
 			Vector3 mouseClick = Input.mousePosition;
 			mouseClick.z = player.transform.position.z - Camera.main.transform.position.z;
 

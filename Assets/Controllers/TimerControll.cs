@@ -6,11 +6,6 @@ public class TimerControll : MonoBehaviour {
 
 	bool started = false;
 	float timer = 0;
-
-	// Use this for initialization
-	void Start () {
-	
-	}
 	
 	// Update is called once per frame
 	void Update () {

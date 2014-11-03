@@ -9,55 +9,56 @@ public class DuckControll : MonoBehaviour {
 	void Start () {
 
 	}
-
+	
 	public void StartGame () {
-		rigidbody2D.AddForce( new Vector2( -20, -20 ) );
+
+		GameObject aim = GameObject.Find( "Aim" );
+		GameObject timer = GameObject.Find( "Timer" );
+		
+		AimControll aimControll = aim.GetComponent<AimControll>();
+		TimerControll timerControll = timer.GetComponent<TimerControll>();
+		
+		aimControll.StartGame();
+		timerControll.StartGame();
 
 		started = true;
-
 	}
 
 
 	// Update is called once per frame
 	void Update () {
 
+		GameObject player = GameObject.Find( "Pato" );
+		Vector3 target;
+
 		if( !started ) {
 
+			// No primeiro toque começa o jogo
 			if ( Input.GetMouseButtonDown (0) ) {
-
-				GameObject aim = GameObject.Find( "Aim" );
-				AimControll aimControll = aim.GetComponent<AimControll>();
-				aimControll.StartGame();
-
-				GameObject timer = GameObject.Find( "Timer" );
-				TimerControll timerControll = timer.GetComponent<TimerControll>();
-				timerControll.StartGame();
-
-				started = true;
+				StartGame();
 			}
 		}
 
+		// Ainda nao clicou no ecra
 		if( !started ) {
 			return;
 		}
-
-		GameObject player = GameObject.Find( "Pato" );
-		Vector3 target;
 
 		if ( Input.GetMouseButtonDown (0) ) {
 			
 			Vector3 mouseClick = Input.mousePosition;
 			mouseClick.z = player.transform.position.z - Camera.main.transform.position.z;
-			target = Camera.main.ScreenToWorldPoint (mouseClick);
 
+			target = Camera.main.ScreenToWorldPoint( mouseClick );
 			target.z = 0;
 			
-			Vector2 direction = ( target - player.transform.position).normalized;
-			
-			
+			Vector2 direction = ( target - player.transform.position ).normalized;
+
+			// O objecto é parado para nao acumular
 			player.rigidbody2D.velocity = Vector2.zero;
 			player.rigidbody2D.angularVelocity = 0;
-			
+
+			// Aplica a força ao objecto na direcao do clique
 			player.rigidbody2D.AddForce ( direction * 30 );
 
 		}
@@ -65,8 +66,11 @@ public class DuckControll : MonoBehaviour {
 
 
 	void OnCollisionEnter2D(Collision2D coll) {
-		if ( coll.gameObject.name == "Aim")
+
+		// Quando o jogador bate na mira o jogo reinicia
+		if ( coll.gameObject.name == "Aim") {
 			Application.LoadLevel( "Game" );
+		}
 		
 	}
 

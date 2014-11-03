@@ -14,13 +14,12 @@ public class TimerControll : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		if( started ) {
 
 			timer += Time.deltaTime;
 
 			float seconds = Mathf.RoundToInt( timer % 60 );
-
-			Debug.Log( "second" + seconds );
 	
 			GetComponent<Text>().text = seconds.ToString();
 

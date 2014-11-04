@@ -30,9 +30,9 @@ public class GameControll : MonoBehaviour {
 		if( !started ) {
 			// No primeiro toque começa o jogo
 			if ( Input.GetMouseButtonDown (0) ) {
+				duckControll.StartGame();
 				aimControll.StartGame();
 				timerControll.StartGame();
-				duckControll.StartGame();
 				started = true;
 			}
 		}

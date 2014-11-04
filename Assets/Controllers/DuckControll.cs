@@ -45,7 +45,12 @@ public class DuckControll : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D coll) {
 
 		// Quando o jogador bate na mira o jogo reinicia
-		if ( coll.gameObject.name == "Aim") {
+		if ( coll.gameObject.name == "Aim" ) {
+			Application.LoadLevel( "Game" );
+		}
+
+		Debug.Log("coll.gameObject.layer" + coll.gameObject.layer );
+		if( coll.gameObject.layer == 11 ) {
 			Application.LoadLevel( "Game" );
 		}
 		

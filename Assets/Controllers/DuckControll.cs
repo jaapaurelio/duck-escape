@@ -22,21 +22,20 @@ public class DuckControll : MonoBehaviour {
 
 		if ( Input.GetMouseButtonDown (0) ) {
 
-			GameObject player = GameObject.Find( "Duck" );
 			Vector3 mouseClick = Input.mousePosition;
-			mouseClick.z = player.transform.position.z - Camera.main.transform.position.z;
+			mouseClick.z = gameObject.transform.position.z - Camera.main.transform.position.z;
 
 			target = Camera.main.ScreenToWorldPoint( mouseClick );
 			target.z = 0;
 			
-			Vector2 direction = ( target - player.transform.position ).normalized;
+			Vector2 direction = ( target - gameObject.transform.position ).normalized;
 
 			// O objecto é parado para nao acumular
-			player.rigidbody2D.velocity = Vector2.zero;
-			player.rigidbody2D.angularVelocity = 0;
+			gameObject.rigidbody2D.velocity = Vector2.zero;
+			gameObject.rigidbody2D.angularVelocity = 0;
 
 			// Aplica a força ao objecto na direcao do clique
-			player.rigidbody2D.AddForce ( direction * 30 );
+			gameObject.rigidbody2D.AddForce ( direction * 30 );
 
 		}
 	}
@@ -49,7 +48,8 @@ public class DuckControll : MonoBehaviour {
 			Application.LoadLevel( "Game" );
 		}
 
-		Debug.Log("coll.gameObject.layer" + coll.gameObject.layer );
+		// 11 - PlayerBorders
+		// TODO Utilizar nome da layer em vez do Id
 		if( coll.gameObject.layer == 11 ) {
 			Application.LoadLevel( "Game" );
 		}

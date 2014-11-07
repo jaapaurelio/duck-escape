@@ -4,6 +4,7 @@ using System.Collections;
 public class DuckControll : MonoBehaviour {
 
 	bool started = false;
+	int speed = 25;
 	
 	public void StartGame () {
 		started = true;
@@ -14,6 +15,12 @@ public class DuckControll : MonoBehaviour {
 	void Update () {
 
 		Vector3 target;
+
+		if( !started ) {
+			if ( Input.GetMouseButtonDown (0) ) {
+				StartGame();
+			}
+		}
 
 		// Ainda nao clicou no ecra
 		if( !started ) {
@@ -35,22 +42,24 @@ public class DuckControll : MonoBehaviour {
 			gameObject.rigidbody2D.angularVelocity = 0;
 
 			// Aplica a força ao objecto na direcao do clique
-			gameObject.rigidbody2D.AddForce ( direction * 30 );
+			gameObject.rigidbody2D.AddForce ( direction * speed );
 
 		}
 	}
 
 
-	void OnCollisionEnter2D(Collision2D coll) {
+	void OnTriggerEnter2D(Collider2D coll) {
+
+		Debug.Log("pato colid " + coll.gameObject.name );
 
 		// Quando o jogador bate na mira o jogo reinicia
 		if ( coll.gameObject.name == "Aim" ) {
 			Application.LoadLevel( "Game" );
 		}
 
-		// 11 - PlayerBorders
+		// 11 - Borders
 		// TODO Utilizar nome da layer em vez do Id
-		if( coll.gameObject.layer == 11 ) {
+		if( coll.gameObject.layer == 12 ) {
 			Application.LoadLevel( "Game" );
 		}
 		

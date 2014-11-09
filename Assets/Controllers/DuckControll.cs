@@ -4,7 +4,7 @@ using System.Collections;
 public class DuckControll : MonoBehaviour {
 
 	bool started = false;
-	int speed = 25;
+	float speed = 5;
 	
 	public void StartGame () {
 		started = true;

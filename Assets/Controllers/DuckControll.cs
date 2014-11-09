@@ -50,8 +50,6 @@ public class DuckControll : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll) {
 
-		Debug.Log("pato colid " + coll.gameObject.name );
-
 		// Quando o jogador bate na mira o jogo reinicia
 		if ( coll.gameObject.name == "Aim" ) {
 			Application.LoadLevel( "Game" );

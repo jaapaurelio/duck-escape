@@ -7,7 +7,7 @@ public class AimControll : MonoBehaviour {
 
 	public void StartGame () {
 		// Aplica a força para mover a mira
-		Vector2 direction = new Vector2( 2.3f, 1 ).normalized;
+		Vector2 direction = new Vector2( 1, 1 ).normalized;
 		rigidbody2D.AddForce( direction * speed );
 	}
 

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameControll : MonoBehaviour {
+public class GameManagerControll : MonoBehaviour {
 
 	bool started = false;
 	GameObject aim;

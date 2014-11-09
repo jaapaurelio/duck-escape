@@ -16,12 +16,6 @@ public class DuckControll : MonoBehaviour {
 
 		Vector3 target;
 
-		if( !started ) {
-			if ( Input.GetMouseButtonDown (0) ) {
-				StartGame();
-			}
-		}
-
 		// Ainda nao clicou no ecra
 		if( !started ) {
 			return;

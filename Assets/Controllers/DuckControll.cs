@@ -7,10 +7,14 @@ public class DuckControll : MonoBehaviour {
 	float speed = 5;
 	
 	public void StartGame () {
+
+		// Coloca o objecto na posição inicial correcta
+		transform.position = new Vector3( -0.9f, -0.5f, 0 );
+
 		started = true;
+
 	}
-
-
+	
 	// Update is called once per frame
 	void Update () {
 
@@ -44,15 +48,21 @@ public class DuckControll : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll) {
 
+
+		GameObject gameManager = GameObject.Find( "GameManager" );
+		
+		GameManagerControll gameManagerControll = gameManager.GetComponent<GameManagerControll>();
+
+
 		// Quando o jogador bate na mira o jogo reinicia
 		if ( coll.gameObject.name == "Aim" ) {
-			Application.LoadLevel( "Game" );
+			gameManagerControll.StartGameScene();
 		}
 
-		// 11 - Borders
+		// 12 - Borders
 		// TODO Utilizar nome da layer em vez do Id
 		if( coll.gameObject.layer == 12 ) {
-			Application.LoadLevel( "Game" );
+			gameManagerControll.StartGameScene();
 		}
 		
 	}

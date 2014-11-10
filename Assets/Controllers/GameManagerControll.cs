@@ -2,8 +2,7 @@
 using System.Collections;
 
 public class GameManagerControll : MonoBehaviour {
-
-	bool started = false;
+	
 	GameObject gameScene;
 	GameObject mainMenuScene;
 	GameObject aim;
@@ -44,6 +43,7 @@ public class GameManagerControll : MonoBehaviour {
 	public void StartMainMenuScene() {
 		HideAllScenes();
 		mainMenuScene.SetActive( true );
+		activeScene = "MENU";
 	}
 
 	public void StartGameScene() {
@@ -55,21 +55,17 @@ public class GameManagerControll : MonoBehaviour {
 
 	public void StartGame() {
 		gameScene.SetActive( true );
+
+		activeScene = "Game";
+
+		duckControll.StartGame();
+		aimControll.StartGame();
+		timerControll.StartGame();
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if( activeScene == "GAME" ) {
-			if( !started ) {
-				// No primeiro toque começa o jogo
-				if ( Input.GetMouseButtonDown (0) ) {
-					duckControll.StartGame();
-					aimControll.StartGame();
-					timerControll.StartGame();
-					started = true;
-				}
-			}
-		}
 	}
 }

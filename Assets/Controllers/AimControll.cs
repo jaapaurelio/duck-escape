@@ -4,13 +4,33 @@ using System.Collections;
 public class AimControll : MonoBehaviour {
 
 	float speed = 5.5f;
+	bool started = false;
+	bool moving = false;
 
 	public void StartGame () {
-		// Aplica a força para mover a mira
-		Vector2 direction = new Vector2( 1, 1 ).normalized;
-		rigidbody2D.AddForce( direction * speed );
+
+		// Coloca o objecto na posição inicial correcta
+		transform.position = new Vector3( 0.4f, 0.3f, 0 );
+
+		started = true;
+		moving = false;
 	}
 
+	void Update() {
+
+		// Ainda nao clicou no ecra ou já está a mover a mira
+		if( !started || moving ) {
+			return;
+		}
+
+		// No primeiro click após iniciar a cena activa a mira
+		if ( Input.GetMouseButtonDown (0) ) {
+			moving = true;
+			// Aplica a força para mover a mira
+			Vector2 direction = new Vector2( 1, 1 ).normalized;
+			rigidbody2D.AddForce( direction * speed );
+		}
+	}
 
 	void OnTriggerEnter2D(Collider2D coll) {
 

@@ -23,7 +23,6 @@ public class SceneFadeInOut : MonoBehaviour
 	void Update () {
 		// If the scene is starting...
 		if( sceneStarting ) {
-			// ... call the StartScene function.
 			StartScene();
 		} else if ( sceneEnding ) {
 			EndScene();

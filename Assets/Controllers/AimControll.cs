@@ -10,7 +10,7 @@ public class AimControll : MonoBehaviour {
 	public void StartGame () {
 
 		// Coloca o objecto na posição inicial correcta
-		transform.position = new Vector3( 0.4f, 0.3f, 0 );
+		transform.position = new Vector3( 0.7f, 0f, 0 );
 
 		started = true;
 		moving = false;

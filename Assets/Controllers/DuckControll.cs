@@ -5,11 +5,19 @@ public class DuckControll : MonoBehaviour {
 
 	bool started = false;
 	float speed = 5;
-	
+	GameObject gameHelp;
+
+	void Start(){
+		gameHelp = GameObject.Find( "GameHelp" );
+	}
+
 	public void StartGame () {
 
 		// Coloca o objecto na posição inicial correcta
-		transform.position = new Vector3( -0.9f, -0.5f, 0 );
+		transform.position = new Vector3( -1f, -0.5f, 0 );
+		transform.localEulerAngles = new Vector3( 0, 0, 5 );
+
+		gameHelp.SetActive( true );
 
 		started = true;
 
@@ -27,6 +35,10 @@ public class DuckControll : MonoBehaviour {
 
 		if ( Input.GetMouseButtonDown (0) ) {
 
+			// esconde a ajuda
+			// TODO arranjar forma de nao fazer isto sempre que clicamos
+			gameHelp.SetActive( false );
+
 			Vector3 mouseClick = Input.mousePosition;
 			mouseClick.z = gameObject.transform.position.z - Camera.main.transform.position.z;
 
@@ -42,6 +54,24 @@ public class DuckControll : MonoBehaviour {
 			// Aplica a força ao objecto na direcao do clique
 			gameObject.rigidbody2D.AddForce ( direction * speed );
 
+			// Roda o pato dna direção do clique
+			Vector3 duckPosition = gameObject.transform.position;
+			int rotationY = 0;
+			int rotationZ = 0;
+
+			if( target.x <  duckPosition.x ) {
+				rotationY = 180;
+			}
+
+			if ( target.y < duckPosition.y ) {
+				rotationZ = -5;
+			} else {
+				rotationZ = 5;
+			}
+
+			transform.localEulerAngles = new Vector3( 0, rotationY, rotationZ );
+
+
 		}
 	}
 
@@ -56,13 +86,13 @@ public class DuckControll : MonoBehaviour {
 
 		// Quando o jogador bate na mira o jogo reinicia
 		if ( coll.gameObject.name == "Aim" ) {
-			gameManagerControll.StartGameScene();
+			gameManagerControll.GameOver();
 		}
 
 		// 12 - Borders
 		// TODO Utilizar nome da layer em vez do Id
 		if( coll.gameObject.layer == 12 ) {
-			gameManagerControll.StartGameScene();
+			gameManagerControll.GameOver();
 		}
 		
 	}

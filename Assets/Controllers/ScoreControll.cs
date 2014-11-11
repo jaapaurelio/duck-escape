@@ -10,6 +10,8 @@ public class ScoreControll : MonoBehaviour {
 
 	// Use this for initialization
 	public void StartGame() {
+		highScore = GameObject.Find( "HighScore" );
+		highScore.GetComponent<Text>().text = SaveControll.control.highScore.ToString();
 		started = true;
 	}
 
@@ -42,8 +44,6 @@ public class ScoreControll : MonoBehaviour {
 	}
 
 	void setHighScore(){
-
-		highScore = GameObject.Find( "HighScore" );
 
 		if( score > SaveControll.control.highScore ) {
 			SaveControll.control.highScore = score;

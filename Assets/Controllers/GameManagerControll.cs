@@ -6,12 +6,12 @@ public class GameManagerControll : MonoBehaviour {
 	GameObject gameScene;
 	GameObject mainMenuScene;
 	GameObject aim;
-	GameObject timer;
+	GameObject score;
 	GameObject duck;
 	GameObject gameOverScene;
 	GameObject screenFader;
 	AimControll aimControll;
-	TimerControll timerControll;
+	ScoreControll scoreControll;
 	DuckControll duckControll;
 	SceneFadeInOut sceneFadeInOut;
 
@@ -19,7 +19,7 @@ public class GameManagerControll : MonoBehaviour {
 	void Start () {
 
 		aim = GameObject.Find( "Aim" );
-		timer = GameObject.Find( "Timer" );
+		score = GameObject.Find( "Score" );
 		duck = GameObject.Find( "Duck" );
 
 		
@@ -29,7 +29,7 @@ public class GameManagerControll : MonoBehaviour {
 		gameOverScene = GameObject.Find( "GameOverScene" );
 
 		aimControll = aim.GetComponent<AimControll>();
-		timerControll = timer.GetComponent<TimerControll>();
+		scoreControll = score.GetComponent<ScoreControll>();
 		duckControll = duck.GetComponent<DuckControll>();
 		sceneFadeInOut = screenFader.GetComponent<SceneFadeInOut>();
 
@@ -59,12 +59,15 @@ public class GameManagerControll : MonoBehaviour {
 		gameScene.SetActive( true );
 		duckControll.StartGame();
 		aimControll.StartGame();
-		timerControll.StartGame();
+		scoreControll.Reset();
+		scoreControll.StartGame();
 
 	}
 
 	public void GameOver() {
 		HideAllScenes();
+
+		scoreControll.Stop();
 
 		gameOverScene.SetActive( true );
 

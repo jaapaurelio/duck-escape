@@ -117,7 +117,13 @@ Prefab:
       propertyPath: m_Radius
       value: .361998618
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 21200000, guid: d9f0fb2ed414747b4b76cd2363019beb, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5d6ad742254574400943fcc0afa012d1,
+        type: 3}
+    m_RemovedComponents:
+    - {fileID: 5800000, guid: d9f0fb2ed414747b4b76cd2363019beb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d9f0fb2ed414747b4b76cd2363019beb, type: 2}
   m_RootGameObject: {fileID: 1565955651}
   m_IsPrefabParent: 0
@@ -348,7 +354,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 15240d58d78b2419a87cf5fbca7d7450, type: 2}
   m_PrefabInternal: {fileID: 1372374562}
   m_GameObject: {fileID: 247285460}
-  m_LocalRotation: {x: 0, y: 0, z: .707106888, w: .707106769}
+  m_LocalRotation: {x: 0, y: 0, z: .707106829, w: .707106709}
   m_LocalPosition: {x: -1.7974, y: -2.82919999e-08, z: 10}
   m_LocalScale: {x: 10.3999996, y: 5.6500001, z: 0}
   m_Children: []
@@ -377,7 +383,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 15240d58d78b2419a87cf5fbca7d7450, type: 2}
   m_PrefabInternal: {fileID: 1372374562}
   m_GameObject: {fileID: 263710966}
-  m_LocalRotation: {x: 0, y: 0, z: .707106888, w: .707106769}
+  m_LocalRotation: {x: 0, y: 0, z: .707106829, w: .707106709}
   m_LocalPosition: {x: 1.80180001, y: -2.14100009e-08, z: 20}
   m_LocalScale: {x: 11, y: 5.80000019, z: 0}
   m_Children: []
@@ -523,7 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Mat: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -544,7 +550,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 395706260}
-  m_HideIfInvisible: 0
 --- !u!1 &427283792
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,7 +772,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Mat: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: f5013528fa6237e40b5637505eeadc8c, type: 3}
@@ -788,7 +793,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 553744018}
-  m_HideIfInvisible: 0
 --- !u!1 &735249888
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,7 +978,6 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
 --- !u!224 &757245512
@@ -1191,7 +1194,7 @@ GameObject:
   - 114: {fileID: 889322374}
   - 95: {fileID: 889322372}
   - 50: {fileID: 889322370}
-  - 61: {fileID: 889322371}
+  - 60: {fileID: 889322371}
   m_Layer: 9
   m_Name: Duck
   m_TagString: Untagged
@@ -1215,18 +1218,31 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!61 &889322371
-BoxCollider2D:
+--- !u!60 &889322371
+PolygonCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 9a67c80cf73924126bba1bf9d335ce04,
-    type: 2}
-  m_PrefabInternal: {fileID: 1509071663}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 889322369}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Size: {x: .430000007, y: .280000001}
-  m_Center: {x: 0, y: 0}
+  m_IsTrigger: 1
+  m_Poly:
+    m_Paths:
+    - - {x: -.068156004, y: .142290294}
+      - {x: .102417707, y: .151986659}
+      - {x: .119938552, y: .12605685}
+      - {x: .125961065, y: .0386835635}
+      - {x: .223256469, y: .041084826}
+      - {x: .223339498, y: -.0252134204}
+      - {x: .111028433, y: -.0260501504}
+      - {x: .0951949358, y: -.0586766005}
+      - {x: -.00786447525, y: -.0593394041}
+      - {x: -.0310149193, y: -.142088056}
+      - {x: -.173249483, y: -.138949931}
+      - {x: -.218493938, y: -.0466291308}
+      - {x: -.220692515, y: .017313987}
+      - {x: -.0830017328, y: .020843029}
 --- !u!95 &889322372
 Animator:
   serializedVersion: 3
@@ -1366,7 +1382,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Mat: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -1387,7 +1403,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1206814061}
-  m_HideIfInvisible: 0
 --- !u!1001 &1372374562
 Prefab:
   m_ObjectHideFlags: 0
@@ -1542,7 +1557,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6100000, guid: 9a67c80cf73924126bba1bf9d335ce04, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9a67c80cf73924126bba1bf9d335ce04, type: 2}
   m_RootGameObject: {fileID: 889322369}
   m_IsPrefabParent: 0
@@ -1584,9 +1600,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 1565955655}
   - 212: {fileID: 1565955654}
-  - 58: {fileID: 1565955653}
   - 114: {fileID: 1565955652}
   - 50: {fileID: 1565955656}
+  - 61: {fileID: 1565955653}
   m_Layer: 0
   m_Name: Aim
   m_TagString: Untagged
@@ -1606,18 +1622,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0575434fe93394afd9ee1db7dc324a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!58 &1565955653
-CircleCollider2D:
+--- !u!61 &1565955653
+BoxCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 5800000, guid: d9f0fb2ed414747b4b76cd2363019beb,
-    type: 2}
-  m_PrefabInternal: {fileID: 15138385}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1565955651}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Radius: .361998618
-  m_Center: {x: 0, y: 0}
+  m_Size: {x: .680000007, y: .680000007}
+  m_Center: {x: -.00999999978, y: 0}
 --- !u!212 &1565955654
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1639,7 +1654,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300002, guid: cc7715a46e2214f93a848c84f25f7253, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5d6ad742254574400943fcc0afa012d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1565955655
 Transform:

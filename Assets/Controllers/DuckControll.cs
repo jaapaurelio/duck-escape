@@ -85,7 +85,7 @@ public class DuckControll : MonoBehaviour {
 
 
 		// Quando o jogador bate na mira o jogo reinicia
-		if ( coll.gameObject.name == "Aim" ) {
+		if ( coll.gameObject.name == "AimCenter" ) {
 			gameManagerControll.GameOver();
 		}
 

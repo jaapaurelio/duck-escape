@@ -4,6 +4,7 @@ using System.Collections;
 public class AimControll : MonoBehaviour {
 
 	float speed = 5.5f;
+	float speedWithDuck = 7f;
 	bool started = false;
 	bool moving = false;
 
@@ -36,61 +37,90 @@ public class AimControll : MonoBehaviour {
 
 		var colliderName = coll.gameObject.name;
 
-		float yForce = 0f;
-		float xForce = 0f;
-		float xOriginal = gameObject.rigidbody2D.velocity.x;
-		float yOriginal = gameObject.rigidbody2D.velocity.y;
-		float minRange = 0.2f;
-		float maxRange = 3f;
 
-		if( colliderName == "BorderTop" || colliderName == "BorderBottom" ) {
+		// Quando a mira bate na parede
+		// TODO Utilizar uma tag em vez de nomes individuais
+		if( colliderName == "BorderTop" ||
+		   colliderName == "BorderBottom" ||
+		   colliderName == "BorderRight" ||
+		   colliderName == "BorderLeft" ) {
 
-			// Ao tocar em cima aplica força apara baixo
-			if( colliderName == "BorderTop" ) {
-				yForce = -1f;
-			
-			// Tocar em baixo aplica força para cima
-			} else {
-				yForce = 1f;
-			}
+			float yForce = 0f;
+			float xForce = 0f;
+			float xOriginal = gameObject.rigidbody2D.velocity.x;
+			float yOriginal = gameObject.rigidbody2D.velocity.y;
+			float minRange = 0.2f;
+			float maxRange = 3f;
 
-			xForce = Random.Range( minRange, maxRange );
+			if( colliderName == "BorderTop" || colliderName == "BorderBottom" ) {
 
-			// Inverte a direção da força para continuar a andar na mesma direção
-			if( xOriginal < 0 ) {
-				xForce = -xForce;
-			}
-
-		}
-
-		if( colliderName == "BorderRight" || colliderName == "BorderLeft" ) {
-			
-			
-			// Ao tocar em cima aplica força apara baixo
-			if( colliderName == "BorderRight" ) {
-				xForce = -1f;
+				// Ao tocar em cima aplica força apara baixo
+				if( colliderName == "BorderTop" ) {
+					yForce = -1f;
 				
 				// Tocar em baixo aplica força para cima
-			} else {
-				xForce = 1f;
+				} else {
+					yForce = 1f;
+				}
+
+				xForce = Random.Range( minRange, maxRange );
+
+				// Inverte a direção da força para continuar a andar na mesma direção
+				if( xOriginal < 0 ) {
+					xForce = -xForce;
+				}
+
 			}
-			
-			yForce = Random.Range( minRange, maxRange );
-			
-			// Inverte a direção da força para continuar a andar na mesma direção
-			if( yOriginal < 0 ) {
-				yForce = -yForce;
+
+			if( colliderName == "BorderRight" || colliderName == "BorderLeft" ) {
+				
+				
+				// Ao tocar em cima aplica força apara baixo
+				if( colliderName == "BorderRight" ) {
+					xForce = -1f;
+					
+					// Tocar em baixo aplica força para cima
+				} else {
+					xForce = 1f;
+				}
+				
+				yForce = Random.Range( minRange, maxRange );
+				
+				// Inverte a direção da força para continuar a andar na mesma direção
+				if( yOriginal < 0 ) {
+					yForce = -yForce;
+				}
+				
 			}
+
+			Vector2 direction = new Vector2( xForce, yForce ).normalized;
 			
+			// Para o movimento para nao acumular forças
+			gameObject.rigidbody2D.velocity = Vector2.zero;
+			gameObject.rigidbody2D.angularVelocity = 0;
+			
+			rigidbody2D.AddForce( direction * speed ); 
+
 		}
 
-		Vector2 direction = new Vector2( xForce, yForce ).normalized;
-		
-		// Para o movimento para nao acumular forças
-		gameObject.rigidbody2D.velocity = Vector2.zero;
-		gameObject.rigidbody2D.angularVelocity = 0;
-		
-		rigidbody2D.AddForce( direction * speed ); 
+		// A mira ao passar pelo pato altera a sua tragetoria para a direção do pato.
+		if( colliderName == "Duck" ) {
+			Debug.Log( "batei pato " + coll.gameObject.transform.position );
+
+			Vector3 target;
+
+			target = coll.gameObject.transform.position;
+			target.z = 0;
+			
+			Vector2 direction = ( target - gameObject.transform.position ).normalized;
+			
+			// Para o movimento para nao acumular forças
+			gameObject.rigidbody2D.velocity = Vector2.zero;
+			gameObject.rigidbody2D.angularVelocity = 0;
+			
+			rigidbody2D.AddForce( direction * speedWithDuck ); 
+
+		}
 
 	}
 

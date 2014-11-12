@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class ScoreControll : MonoBehaviour {
 
 	bool started = false;
+	bool counting = false;
 	float score = 0;
 	GameObject highScore;
 
@@ -55,14 +56,25 @@ public class ScoreControll : MonoBehaviour {
 	// Update is called once per frame
 	void Update() {
 	
-		if( started ) {
-			
+		if( !started ) {
+			return;
+		}
+
+		// No primeiro click após iniciar activa o contador
+		if( !counting ) {
+
+			if ( Input.GetMouseButtonDown (0) ) {
+				counting = true;
+			}
+		}
+
+
+		if( counting ) {
 			score += Time.deltaTime;
 			
 			float seconds = Mathf.RoundToInt( score % 60 );
 			
 			GetComponent<Text>().text = seconds.ToString();
-			
 		}
 
 	}

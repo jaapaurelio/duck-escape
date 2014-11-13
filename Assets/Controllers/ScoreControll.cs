@@ -42,6 +42,7 @@ public class ScoreControll : MonoBehaviour {
 		score = Get();
 		setHighScore ();
 		started = false;
+		counting = false;
 	}
 
 	void setHighScore(){

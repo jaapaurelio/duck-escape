@@ -4,7 +4,7 @@ using System.Collections;
 public class AimControll : MonoBehaviour {
 
 	float speed = 5.5f;
-	float speedWithDuck = 7f;
+	float speedWithDuck = 8.5f;
 	bool started = false;
 	bool moving = false;
 

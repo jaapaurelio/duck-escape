@@ -43,7 +43,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 95: {fileID: 9500000}
   - 50: {fileID: 5000000}
-  - 61: {fileID: 6100000}
+  - 60: {fileID: 6000000}
   m_Layer: 9
   m_Name: Duck
   m_TagString: Untagged
@@ -243,23 +243,37 @@ Rigidbody2D:
   m_Mass: .100000001
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_FixedAngle: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!61 &6100000
-BoxCollider2D:
+--- !u!60 &6000000
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Size: {x: .430000007, y: .280000001}
-  m_Center: {x: 0, y: 0}
+  m_IsTrigger: 1
+  m_Poly:
+    m_Paths:
+    - - {x: -.068156004, y: .142290294}
+      - {x: .102417707, y: .151986659}
+      - {x: .119938552, y: .12605685}
+      - {x: .125961065, y: .0386835635}
+      - {x: .223256469, y: .041084826}
+      - {x: .223339498, y: -.0252134204}
+      - {x: .111028433, y: -.0260501504}
+      - {x: .0951949358, y: -.0586766005}
+      - {x: -.00786447525, y: -.0593394041}
+      - {x: -.0310149193, y: -.142088056}
+      - {x: -.173249483, y: -.138949931}
+      - {x: -.218493938, y: -.0466291308}
+      - {x: -.220692515, y: .017313987}
+      - {x: -.0830017328, y: .020843029}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 3

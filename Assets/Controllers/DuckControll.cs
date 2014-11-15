@@ -17,6 +17,8 @@ public class DuckControll : MonoBehaviour {
 		transform.position = new Vector3( -1f, -0.5f, 0 );
 		transform.localEulerAngles = new Vector3( 0, 0, 5 );
 
+		rigidbody2D.gravityScale = 0;
+
 		gameHelp.SetActive( true );
 
 		started = true;
@@ -75,6 +77,13 @@ public class DuckControll : MonoBehaviour {
 		}
 	}
 
+	public void Shoot() {
+		started = false;
+
+		gameObject.rigidbody2D.AddTorque( 0.5f );
+
+		rigidbody2D.gravityScale = 0.5f;
+	}
 
 	void OnTriggerEnter2D(Collider2D coll) {
 
@@ -83,16 +92,14 @@ public class DuckControll : MonoBehaviour {
 		
 		GameManagerControll gameManagerControll = gameManager.GetComponent<GameManagerControll>();
 
-
 		// Quando o jogador bate na mira o jogo reinicia
 		if ( coll.gameObject.name == "AimCenter" ) {
-			gameManagerControll.GameOver();
-		}
+			gameManagerControll.Shoot();
 
 		// 12 - Borders
 		// TODO Utilizar nome da layer em vez do Id
-		if( coll.gameObject.layer == 12 ) {
-			gameManagerControll.GameOver();
+		} else if( coll.gameObject.layer == 12 ) {
+			gameManagerControll.Shoot();
 		}
 		
 	}

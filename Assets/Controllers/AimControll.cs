@@ -10,6 +10,8 @@ public class AimControll : MonoBehaviour {
 
 	public void StartGame () {
 
+		gameObject.SetActive( true );
+
 		// Coloca o objecto na posição inicial correcta
 		transform.position = new Vector3( 0.7f, 0f, 0 );
 
@@ -40,7 +42,7 @@ public class AimControll : MonoBehaviour {
 
 		// Quando a mira bate na parede
 		// TODO Utilizar uma tag em vez de nomes individuais
-		if( colliderName == "BorderTop" ||
+		if ( colliderName == "BorderTop" ||
 		   colliderName == "BorderBottom" ||
 		   colliderName == "BorderRight" ||
 		   colliderName == "BorderLeft" ) {
@@ -101,12 +103,11 @@ public class AimControll : MonoBehaviour {
 			
 			rigidbody2D.AddForce( direction * speed ); 
 
-		}
-
+		
 		// A mira ao passar pelo pato altera a sua tragetoria para a direção do pato.
-		if( colliderName == "Duck" ) {
-			Debug.Log( "batei pato " + coll.gameObject.transform.position );
-
+		} else if( colliderName == "Duck" ) {
+		
+	
 			Vector3 target;
 
 			target = coll.gameObject.transform.position;
@@ -122,6 +123,12 @@ public class AimControll : MonoBehaviour {
 
 		}
 
+	}
+
+	public void Hide() {
+		gameObject.SetActive( false );
+		started = false;
+		moving = false;
 	}
 
 }

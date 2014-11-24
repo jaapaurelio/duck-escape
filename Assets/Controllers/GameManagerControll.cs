@@ -58,6 +58,7 @@ public class GameManagerControll : MonoBehaviour {
 	public void StartMainMenuScene() {
 		HideAllScenes();
 		mainMenuScene.SetActive( true );
+		mainMenuScene.transform.position = new Vector3(0, 0, -10);
 	}
 
 	public void StartGameScene() {
@@ -69,6 +70,7 @@ public class GameManagerControll : MonoBehaviour {
 
 	public void StartGame() {
 		gameScene.SetActive( true );
+		gameScene.transform.position = new Vector3(0, 0, -10);
 		duckControll.StartGame();
 		aimControll.StartGame();
 		scoreControll.Reset();
@@ -94,6 +96,7 @@ public class GameManagerControll : MonoBehaviour {
 	public void GameOver() {
 		HideAllScenes();
 		gameOverScene.SetActive( true );
+		gameOverScene.transform.position = new Vector3(0, 0, -10);
 	}
 
 	void ShowBorders() {

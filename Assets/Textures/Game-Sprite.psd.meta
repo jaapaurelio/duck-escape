@@ -32,6 +32,7 @@ TextureImporter:
     21300054: Game-Sprite_26
     21300056: Game-Sprite_27
     21300058: Game-Sprite_28
+    21300060: BackBtn
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -117,9 +118,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 125
-        y: 485
-        width: 54
-        height: 5
+        y: 484
+        width: 58
+        height: 6
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,6 +161,16 @@ TextureImporter:
         y: 394
         width: 144
         height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BackBtn
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 376
+        width: 18
+        height: 12
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -3,10 +3,24 @@ using System.Collections;
 
 public class AimControll : MonoBehaviour {
 
-	float speed = 5.5f;
+	static float LEVEL_TIME = 5.0f;	// segundos
+	static float LEVEL_SPEED_INCREASE = 0.5f;
+	static float INITIAL_SPEED = 5f;
+
+	float speed = INITIAL_SPEED;
 	float speedWithDuck = 8.5f;
 	bool started = false;
 	bool moving = false;
+	float timeLeft = LEVEL_TIME;
+	GameObject levelUpLabel;
+
+	// TODO Analisar uma forma melhor de mostrar o level up
+	float timeShowLevelUp = 1f;
+
+
+	public void Start() {
+		levelUpLabel = GameObject.Find( "LevelUpLabel" );
+	}
 
 	public void StartGame () {
 
@@ -17,14 +31,24 @@ public class AimControll : MonoBehaviour {
 
 		started = true;
 		moving = false;
+		timeLeft = LEVEL_TIME;
+		speed = INITIAL_SPEED;
+		levelUpLabel.SetActive( false );
 	}
 
 	void Update() {
 
-		// Ainda nao clicou no ecra ou já está a mover a mira
-		if( !started || moving ) {
+		// Ainda nao clicou no ecra
+		if( !started ) {
 			return;
 		}
+
+		// Mira ja esta a andar
+		if( moving ) {
+			updateLevelTimer();
+			return;
+		}
+
 
 		// No primeiro click após iniciar a cena activa a mira
 		if ( Input.GetMouseButtonDown (0) ) {
@@ -35,10 +59,31 @@ public class AimControll : MonoBehaviour {
 		}
 	}
 
+	void updateLevelTimer() {
+		
+		timeLeft -= Time.deltaTime;
+		timeShowLevelUp -= Time.deltaTime;
+
+		if( timeLeft < 0) {
+			timeLeft = LEVEL_TIME;
+			levelUp();
+		}
+
+		if ( timeShowLevelUp < 0 ) {
+			levelUpLabel.SetActive( false );
+		}
+
+	}
+
+	void levelUp() {
+		speed += LEVEL_SPEED_INCREASE;
+		levelUpLabel.SetActive( true );
+		timeShowLevelUp = 1f;
+	}
+
 	void OnTriggerEnter2D(Collider2D coll) {
 
 		var colliderName = coll.gameObject.name;
-
 
 		// Quando a mira bate na parede
 		// TODO Utilizar uma tag em vez de nomes individuais

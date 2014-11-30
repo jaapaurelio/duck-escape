@@ -5,7 +5,7 @@ public class AimControll : MonoBehaviour {
 
 
 	static float LEVEL_SPEED_INCREASE = 0.5f;
-	static float INITIAL_SPEED = 8f;
+	static float INITIAL_SPEED = 5f;
 	static float SPEED_WHEN_DUCK = 8.5f;
 
 	float speed = INITIAL_SPEED;

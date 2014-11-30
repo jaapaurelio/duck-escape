@@ -3,7 +3,7 @@ using System.Collections;
 
 public class AimControll : MonoBehaviour {
 
-	static float LEVEL_TIME = 5.0f;	// segundos
+
 	static float LEVEL_SPEED_INCREASE = 0.5f;
 	static float INITIAL_SPEED = 5f;
 
@@ -11,15 +11,9 @@ public class AimControll : MonoBehaviour {
 	float speedWithDuck = 8.5f;
 	bool started = false;
 	bool moving = false;
-	float timeLeft = LEVEL_TIME;
-	GameObject levelUpLabel;
-
-	// TODO Analisar uma forma melhor de mostrar o level up
-	float timeShowLevelUp = 1f;
-
 
 	public void Start() {
-		levelUpLabel = GameObject.Find( "LevelUpLabel" );
+
 	}
 
 	public void StartGame () {
@@ -31,9 +25,7 @@ public class AimControll : MonoBehaviour {
 
 		started = true;
 		moving = false;
-		timeLeft = LEVEL_TIME;
 		speed = INITIAL_SPEED;
-		levelUpLabel.SetActive( false );
 	}
 
 	void Update() {
@@ -45,10 +37,8 @@ public class AimControll : MonoBehaviour {
 
 		// Mira ja esta a andar
 		if( moving ) {
-			updateLevelTimer();
 			return;
 		}
-
 
 		// No primeiro click após iniciar a cena activa a mira
 		if ( Input.GetMouseButtonDown (0) ) {
@@ -59,26 +49,10 @@ public class AimControll : MonoBehaviour {
 		}
 	}
 
-	void updateLevelTimer() {
-		
-		timeLeft -= Time.deltaTime;
-		timeShowLevelUp -= Time.deltaTime;
 
-		if( timeLeft < 0) {
-			timeLeft = LEVEL_TIME;
-			levelUp();
-		}
 
-		if ( timeShowLevelUp < 0 ) {
-			levelUpLabel.SetActive( false );
-		}
-
-	}
-
-	void levelUp() {
+	public void LevelUp() {
 		speed += LEVEL_SPEED_INCREASE;
-		levelUpLabel.SetActive( true );
-		timeShowLevelUp = 1f;
 	}
 
 	void OnTriggerEnter2D(Collider2D coll) {

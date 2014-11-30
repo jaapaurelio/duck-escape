@@ -4,16 +4,32 @@ using UnityEngine.UI;
 
 public class ScoreControll : MonoBehaviour {
 
+	static float LEVEL_TIME = 5.0f;	// secconds
+
 	bool started = false;
 	bool counting = false;
 	float score = 0;
 	GameObject highScore;
+	float timeToLevelUp = LEVEL_TIME;
+	GameObject levelUpLabel;
+	GameObject aim;
+	AimControll aimControll;
+
+	public void Start() {
+		levelUpLabel = GameObject.Find( "LevelUpLabel" );
+		aim = GameObject.Find( "Aim" );
+
+		aimControll = aim.GetComponent<AimControll>();
+	}
 
 	// Use this for initialization
 	public void StartGame() {
 		highScore = GameObject.Find( "HighScore" );
 		highScore.GetComponent<Text>().text = SaveControll.control.highScore.ToString();
 		started = true;
+
+		levelUpLabel.SetActive( false );
+		timeToLevelUp = LEVEL_TIME;
 	}
 
 	// Get score value
@@ -76,7 +92,35 @@ public class ScoreControll : MonoBehaviour {
 			float seconds = Mathf.RoundToInt( score % 60 );
 			
 			GetComponent<Text>().text = seconds.ToString();
+
+			updateLevelTimer();
 		}
+
+
+
+	}
+
+	void updateLevelTimer() {
+		
+		timeToLevelUp -= Time.deltaTime;
+		
+		if( timeToLevelUp < 0) {
+			timeToLevelUp = LEVEL_TIME;
+			LevelUp();
+		}
+		
+	}
+
+	void LevelUp() {
+		aimControll.LevelUp();
+		StartCoroutine( ShowLevelUp() );
+	}
+
+	IEnumerator ShowLevelUp () {
+
+		levelUpLabel.SetActive( true );
+		yield return new WaitForSeconds(1);
+		levelUpLabel.SetActive( false );
 
 	}
 }

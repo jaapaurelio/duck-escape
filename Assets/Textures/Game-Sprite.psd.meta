@@ -14,9 +14,9 @@ TextureImporter:
     21300018: Game-Sprite_8
     21300020: BestScoreLabel
     21300022: LevelUp
-    21300024: Game-Sprite_11
-    21300026: Game-Sprite_12
-    21300028: Game-Sprite_13
+    21300024: CloudsBig
+    21300026: Cloud
+    21300028: CloudsSmall
     21300030: Game-Sprite_14
     21300032: Game-Sprite_15
     21300034: Game-Sprite_16
@@ -181,6 +181,36 @@ TextureImporter:
         y: 377
         width: 42
         height: 11
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudsBig
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 480
+        width: 106
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Cloud
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 454
+        width: 49
+        height: 23
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudsSmall
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 431
+        width: 60
+        height: 19
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

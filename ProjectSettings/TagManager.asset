@@ -42,9 +42,13 @@ TagManager:
     userID: 0
     uniqueID: 0
     locked: 0
-  - name: Fundo
+  - name: Background
     userID: 1
     uniqueID: 1121765251
+    locked: 0
+  - name: GameUi
+    userID: 3
+    uniqueID: 3905232999
     locked: 0
   - name: Player
     userID: 2

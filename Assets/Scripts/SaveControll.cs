@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
@@ -9,6 +10,8 @@ public class SaveControll : MonoBehaviour {
 	public static SaveControll control;
 
 	public float highScore;
+	public float totalScore;
+	public List<float> scoreList = new List<float>();
 
 	void Awake(){
 		if (control == null) {
@@ -26,6 +29,8 @@ public class SaveControll : MonoBehaviour {
 			
 		GameData data = new GameData ();
 		data.highScore = highScore;
+		data.totalScore = totalScore;
+		data.scoreList = scoreList;
 
 		bf.Serialize( file, data );
 		file.Close();
@@ -40,6 +45,9 @@ public class SaveControll : MonoBehaviour {
 			file.Close();
 
 			highScore = data.highScore;
+			totalScore = data.totalScore;
+			scoreList = data.scoreList;
+
 		}
 	}
 
@@ -48,4 +56,6 @@ public class SaveControll : MonoBehaviour {
 [Serializable]
 class GameData{
 	public float highScore;
+	public float totalScore;
+	public List<float> scoreList = new List<float>();
 }

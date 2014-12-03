@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class ScoreControll : MonoBehaviour {
@@ -57,8 +58,20 @@ public class ScoreControll : MonoBehaviour {
 	public void Stop() {
 		score = Get();
 		setHighScore ();
+		addScore();
+		getScores();
 		started = false;
 		counting = false;
+	}
+	
+	// Get highscore
+	public float getBestScore() {
+		return SaveControll.control.highScore;
+	}
+	
+	// Get total scores
+	public float getTotalScores() {
+		return SaveControll.control.totalScore;
 	}
 
 	void setHighScore(){
@@ -68,6 +81,27 @@ public class ScoreControll : MonoBehaviour {
 
 			highScore.GetComponent<Text>().text = SaveControll.control.highScore.ToString();
 		}
+	}
+	
+	// Add scores
+	void addScore(){
+		
+		// set total score
+		SaveControll.control.totalScore += score;
+		// add scores to list
+		//SaveControll.control.scoreList.Add (score);
+
+		//totalScore.GetComponent<Text>().text = getTotalScores().ToString();
+		
+	}
+	
+	// Add scores
+	void getScores(){
+		
+		//foreach (float value in SaveControll.control.scoreList) {
+		//	Debug.Log( "value " + value );
+		//}
+		
 	}
 	
 	// Update is called once per frame

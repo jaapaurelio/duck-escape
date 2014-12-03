@@ -45,6 +45,8 @@ public class GameManagerControll : MonoBehaviour {
 		sceneFadeInOut = screenFader.GetComponent<SceneFadeInOut>();
 		shootControll = shoot.GetComponent<ShootControll>();
 
+		SaveControll.control.Load();
+
 		StartMainMenuScene();
 
 	}
@@ -86,6 +88,7 @@ public class GameManagerControll : MonoBehaviour {
 		ShowFloor();
 		
 		scoreControll.Stop();
+		SaveControll.control.Save();
 		aimControll.Hide();
 		duckControll.Shoot();
 

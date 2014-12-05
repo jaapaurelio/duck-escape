@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using GooglePlayGames;
+using UnityEngine.SocialPlatforms;
 
 public class ScoreControll : MonoBehaviour {
 
@@ -76,10 +78,24 @@ public class ScoreControll : MonoBehaviour {
 
 	void setHighScore(){
 
+		long scoreL = (long) score;
+
 		if( score > SaveControll.control.highScore ) {
 			SaveControll.control.highScore = score;
 
 			highScore.GetComponent<Text>().text = SaveControll.control.highScore.ToString();
+
+			// Set highscore to the leaderboard of google play services
+			Social.ReportScore( scoreL, "CgkIrPzUj8oPEAIQBg", (bool success) => {
+
+				// handle success or failure
+				if( success ){
+					Debug.Log( "adicionado com sucesso" );
+				}else{
+					Debug.Log( "falhou" );
+				}
+
+			});
 		}
 	}
 	

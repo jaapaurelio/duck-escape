@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using GooglePlayGames;
+using UnityEngine.SocialPlatforms;
 
 public class RankingButton : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	void OnMouseDown () {
+
+		// show leaderboard UI
+		Social.ShowLeaderboardUI();
+
 	}
 }

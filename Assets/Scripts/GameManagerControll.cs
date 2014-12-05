@@ -52,6 +52,20 @@ public class GameManagerControll : MonoBehaviour {
 
 		SaveControll.control.Load();
 
+
+		// authenticate user:
+		Social.localUser.Authenticate((bool success) => {
+			// handle success or failure
+			if( success ){
+				Debug.Log("login com sucesso");
+				
+			}else{
+				Debug.Log("login insucesso");
+			}
+			
+		});
+
+
 		StartMainMenuScene();
 
 	}

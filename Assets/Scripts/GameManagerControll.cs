@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using GooglePlayGames;
+using UnityEngine.SocialPlatforms;
 
 public class GameManagerControll : MonoBehaviour {
 	
@@ -24,6 +26,9 @@ public class GameManagerControll : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		// Activate the Google Play Games platform
+		PlayGamesPlatform.Activate();
 
 		aim = GameObject.Find( "Aim" );
 		score = GameObject.Find( "Score" );

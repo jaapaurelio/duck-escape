@@ -1285,6 +1285,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 747266412}
   - 212: {fileID: 747266413}
+  - 61: {fileID: 747266415}
+  - 114: {fileID: 747266414}
   m_Layer: 0
   m_Name: RankingBtn
   m_TagString: Untagged
@@ -1327,6 +1329,28 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300042, guid: befee96968e834e21b3e130e3dd7bd97, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &747266414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 747266411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5676fe947ca77134ca7f3168936cbb8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &747266415
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 747266411}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Size: {x: .629999995, y: .300000012}
+  m_Center: {x: 0, y: 0}
 --- !u!1 &755666720
 GameObject:
   m_ObjectHideFlags: 0

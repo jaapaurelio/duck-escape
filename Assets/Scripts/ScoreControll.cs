@@ -17,6 +17,7 @@ public class ScoreControll : MonoBehaviour {
 	GameObject levelUpLabel;
 	GameObject aim;
 	AimControll aimControll;
+	string leaderBoardId = "CgkIrPzUj8oPEAIQBg";
 
 	public void Start() {
 		levelUpLabel = GameObject.Find( "LevelUpLabel" );
@@ -86,15 +87,8 @@ public class ScoreControll : MonoBehaviour {
 			highScore.GetComponent<Text>().text = SaveControll.control.highScore.ToString();
 
 			// Set highscore to the leaderboard of google play services
-			Social.ReportScore( scoreL, "CgkIrPzUj8oPEAIQBg", (bool success) => {
-
-				// handle success or failure
-				if( success ){
-					Debug.Log( "adicionado com sucesso" );
-				}else{
-					Debug.Log( "falhou" );
-				}
-
+			Social.ReportScore( scoreL, leaderBoardId, (bool success) => {
+				// adicionado
 			});
 		}
 	}

@@ -14,7 +14,8 @@ public class DuckControll : MonoBehaviour {
 	public void StartGame () {
 
 		// Coloca o objecto na posição inicial correcta
-		transform.position = new Vector3( -1f, -0.75f, 0 );
+
+		transform.position = new Vector3( -1f, -0.5f, 0 );
 		transform.localEulerAngles = new Vector3( 0, 0, 0 );
 
 		rigidbody2D.gravityScale = 0;

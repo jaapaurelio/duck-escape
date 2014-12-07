@@ -11,9 +11,9 @@ public class ScoreControll : MonoBehaviour {
 
 	bool started = false;
 	bool counting = false;
-	float score = 0;
+	float gameTimeInSeconds = 0;
+	float currentScore = 0;
 	GameObject highScore;
-	float timeToLevelUp = LEVEL_TIME;
 	GameObject levelUpLabel;
 	GameObject aim;
 	AimControll aimControll;
@@ -34,7 +34,6 @@ public class ScoreControll : MonoBehaviour {
 		started = true;
 
 		levelUpLabel.SetActive( false );
-		timeToLevelUp = LEVEL_TIME;
 	}
 
 	// Get score value
@@ -49,8 +48,9 @@ public class ScoreControll : MonoBehaviour {
 
 	// Reset score
 	public void Reset() {
-		score = 0;
-		GetComponent<Text>().text = score.ToString();
+		gameTimeInSeconds = 0;
+		currentScore = 0;
+		GetComponent<Text>().text = currentScore.ToString();
 	}
 
 	// Show score
@@ -60,7 +60,6 @@ public class ScoreControll : MonoBehaviour {
 
 	// Stop score count
 	public void Stop() {
-		score = Get();
 		setHighScore ();
 		addScore();
 		getScores();
@@ -81,10 +80,10 @@ public class ScoreControll : MonoBehaviour {
 	void setHighScore(){
 		// TODO alterar chamda para o ecra do game over
 		return;
-		long scoreL = (long) score;
+		long scoreL = (long) currentScore;
 
-		if( score > SaveControll.control.highScore ) {
-			SaveControll.control.highScore = score;
+		if( currentScore > SaveControll.control.highScore ) {
+			SaveControll.control.highScore = currentScore;
 
 			highScore.GetComponent<Text>().text = SaveControll.control.highScore.ToString();
 
@@ -99,9 +98,9 @@ public class ScoreControll : MonoBehaviour {
 	void addScore(){
 		
 		// set total score
-		SaveControll.control.totalScore += score;
+		SaveControll.control.totalScore += currentScore;
 		// add scores to list
-		//SaveControll.control.scoreList.Add (score);
+		//SaveControll.control.scoreList.Add (currentScore);
 
 		//totalScore.GetComponent<Text>().text = getTotalScores().ToString();
 		
@@ -133,25 +132,24 @@ public class ScoreControll : MonoBehaviour {
 
 
 		if( counting ) {
-			score += Time.deltaTime;
+			gameTimeInSeconds += Time.deltaTime;
 			
-			float seconds = Mathf.RoundToInt( score % 60 );
-			
-			GetComponent<Text>().text = seconds.ToString();
+			float gameTimeRounded = Mathf.RoundToInt( gameTimeInSeconds % 60 );
 
-			updateLevelTimer();
+			if( currentScore != gameTimeRounded ) {
+				currentScore = gameTimeRounded;
+				GetComponent<Text>().text = currentScore.ToString();
+				CheckLevel( currentScore );
+			}
 		}
 
 
 
 	}
 
-	void updateLevelTimer() {
+	void CheckLevel( float currentScore ) {
 		
-		timeToLevelUp -= Time.deltaTime;
-		
-		if( timeToLevelUp < 0) {
-			timeToLevelUp = LEVEL_TIME;
+		if( currentScore % LEVEL_TIME == 0 ) {
 			LevelUp();
 		}
 		

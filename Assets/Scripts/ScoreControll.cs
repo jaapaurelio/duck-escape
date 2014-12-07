@@ -28,8 +28,9 @@ public class ScoreControll : MonoBehaviour {
 
 	// Use this for initialization
 	public void StartGame() {
-		highScore = GameObject.Find( "HighScore" );
-		highScore.GetComponent<Text>().text = SaveControll.control.highScore.ToString();
+		// TODO alterar para o ecra do game over
+		//highScore = GameObject.Find( "HighScore" );
+		//highScore.GetComponent<Text>().text = SaveControll.control.highScore.ToString();
 		started = true;
 
 		levelUpLabel.SetActive( false );
@@ -78,7 +79,8 @@ public class ScoreControll : MonoBehaviour {
 	}
 
 	void setHighScore(){
-
+		// TODO alterar chamda para o ecra do game over
+		return;
 		long scoreL = (long) score;
 
 		if( score > SaveControll.control.highScore ) {

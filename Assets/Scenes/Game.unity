@@ -975,7 +975,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400022, guid: 9a19f9f895c8549ce8fa1af732911989, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400022, guid: 9a19f9f895c8549ce8fa1af732911989, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3054,6 +3054,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1725349246}
   - 212: {fileID: 1725349247}
+  - 95: {fileID: 1725349248}
   m_Layer: 0
   m_Name: LevelUpLabel
   m_TagString: Untagged
@@ -3096,6 +3097,21 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300022, guid: befee96968e834e21b3e130e3dd7bd97, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!95 &1725349248
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1725349245}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26f74c27b99de4fe182948db94bd84e4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1750292992
 GameObject:
   m_ObjectHideFlags: 0
@@ -3322,7 +3338,7 @@ Transform:
   m_PrefabInternal: {fileID: 479276603}
   m_GameObject: {fileID: 1833461568}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1565955655}

@@ -17,10 +17,10 @@ TextureImporter:
     21300024: CloudsBig
     21300026: Cloud
     21300028: CloudsSmall
-    21300030: Game-Sprite_14
-    21300032: Game-Sprite_15
-    21300034: Game-Sprite_16
-    21300036: Game-Sprite_17
+    21300030: DuckHead
+    21300032: DuckWingBig
+    21300034: DuckWingSmall
+    21300036: DuckBico
     21300038: PlayBtn
     21300040: ScoreBoard
     21300042: RankingBtn
@@ -33,6 +33,7 @@ TextureImporter:
     21300056: Game-Sprite_27
     21300058: Game-Sprite_28
     21300060: BackBtn
+    21300062: DuckBody
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -211,6 +212,56 @@ TextureImporter:
         y: 431
         width: 60
         height: 19
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DuckHead
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 343
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DuckWingBig
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 349
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DuckWingSmall
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 334
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DuckBico
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 324
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DuckBody
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 324
+        width: 19
+        height: 15
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

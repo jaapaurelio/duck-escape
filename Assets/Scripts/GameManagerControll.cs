@@ -119,6 +119,9 @@ public class GameManagerControll : MonoBehaviour {
 		gameOverScene.SetActive( true );
 		gameOverScene.transform.position = new Vector3(0, 0, -10);
 
+		scoreControll.SetHighScore();
+		scoreControll.addScore();
+
 		// TODO mover para controlador do ecra game over
 		GameObject highScore = GameObject.Find( "HighScore" );
 		GameObject finalScore = GameObject.Find( "FinalScore" );

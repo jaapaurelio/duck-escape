@@ -56,8 +56,8 @@ public class ScoreControll : MonoBehaviour {
 
 	// Stop score count
 	public void Stop() {
-		SetHighScore();
-		addScore();
+		//SetHighScore();
+		//addScore();
 		started = false;
 		counting = false;
 	}
@@ -86,7 +86,7 @@ public class ScoreControll : MonoBehaviour {
 	}
 	
 	// Add scores
-	void addScore(){
+	public void addScore(){
 		
 		// set total score
 		SaveControll.control.totalScore += currentScore;

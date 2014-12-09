@@ -122,7 +122,7 @@ public class GameManagerControll : MonoBehaviour {
 		// TODO mover para controlador do ecra game over
 		GameObject highScore = GameObject.Find( "HighScore" );
 		GameObject finalScore = GameObject.Find( "FinalScore" );
-		highScore.GetComponent<Text>().text = SaveControll.control.highScore.ToString();
+		highScore.GetComponent<Text>().text = scoreControll.getBestScore().ToString();
 		finalScore.GetComponent<Text>().text = scoreControll.GetScore().ToString();
 
 	}

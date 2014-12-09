@@ -7,8 +7,17 @@ public class RankingButton : MonoBehaviour {
 
 	void OnMouseDown () {
 
-		// show leaderboard UI
-		Social.ShowLeaderboardUI();
+		// authenticate user:
+		Social.localUser.Authenticate((bool success) => {
+			// handle success or failure
+			if( success ){
+				/// show leaderboard UI
+				Social.ShowLeaderboardUI();			
+			}else{
+				//Debug.Log("login insucesso");
+			}
+			
+		});
 
 	}
 }

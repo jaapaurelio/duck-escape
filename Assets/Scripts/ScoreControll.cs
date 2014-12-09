@@ -13,7 +13,6 @@ public class ScoreControll : MonoBehaviour {
 	bool counting = false;
 	float gameTimeInSeconds = 0;
 	float currentScore = 0;
-	GameObject highScore;
 	GameObject levelUpLabel;
 	GameObject aim;
 	AimControll aimControll;
@@ -28,17 +27,14 @@ public class ScoreControll : MonoBehaviour {
 
 	// Use this for initialization
 	public void StartGame() {
-		// TODO alterar para o ecra do game over
-		//highScore = GameObject.Find( "HighScore" );
-		//highScore.GetComponent<Text>().text = SaveControll.control.highScore.ToString();
 		started = true;
 
 		levelUpLabel.SetActive( false );
 	}
 
 	// Get score value
-	public float Get() {
-		return float.Parse( GetComponent<Text>().text );
+	public float GetScore() {
+		return currentScore;
 	}
 
 	// Hide score
@@ -60,9 +56,8 @@ public class ScoreControll : MonoBehaviour {
 
 	// Stop score count
 	public void Stop() {
-		setHighScore ();
+		SetHighScore();
 		addScore();
-		getScores();
 		started = false;
 		counting = false;
 	}
@@ -77,15 +72,11 @@ public class ScoreControll : MonoBehaviour {
 		return SaveControll.control.totalScore;
 	}
 
-	void setHighScore(){
-		// TODO alterar chamda para o ecra do game over
-		return;
+	public void SetHighScore(){
 		long scoreL = (long) currentScore;
 
 		if( currentScore > SaveControll.control.highScore ) {
 			SaveControll.control.highScore = currentScore;
-
-			highScore.GetComponent<Text>().text = SaveControll.control.highScore.ToString();
 
 			// Set highscore to the leaderboard of google play services
 			Social.ReportScore( scoreL, leaderBoardId, (bool success) => {

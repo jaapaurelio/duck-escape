@@ -975,7 +975,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400022, guid: 9a19f9f895c8549ce8fa1af732911989, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 400022, guid: 9a19f9f895c8549ce8fa1af732911989, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1785,7 +1785,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 11e0701df97d84a01b832648f841522b, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 100014, guid: 11e0701df97d84a01b832648f841522b, type: 2}
       propertyPath: m_Name
@@ -2732,7 +2732,7 @@ GameObject:
   - 222: {fileID: 1529038250}
   - 114: {fileID: 1529038249}
   m_Layer: 5
-  m_Name: Score_Scoreboard
+  m_Name: FinalScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2780,7 +2780,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 14
+  m_Text: 0
 --- !u!222 &1529038250
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3027,7 +3027,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 1243
+  m_Text: 0
 --- !u!222 &1684644633
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3479,7 +3479,7 @@ Transform:
   m_PrefabInternal: {fileID: 479276603}
   m_GameObject: {fileID: 1833461568}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -4, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1565955655}

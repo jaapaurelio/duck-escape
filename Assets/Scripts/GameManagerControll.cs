@@ -2,6 +2,7 @@
 using System.Collections;
 using GooglePlayGames;
 using UnityEngine.SocialPlatforms;
+using UnityEngine.UI;
 
 public class GameManagerControll : MonoBehaviour {
 	
@@ -117,6 +118,13 @@ public class GameManagerControll : MonoBehaviour {
 		HideAllScenes();
 		gameOverScene.SetActive( true );
 		gameOverScene.transform.position = new Vector3(0, 0, -10);
+
+		// TODO mover para controlador do ecra game over
+		GameObject highScore = GameObject.Find( "HighScore" );
+		GameObject finalScore = GameObject.Find( "FinalScore" );
+		highScore.GetComponent<Text>().text = SaveControll.control.highScore.ToString();
+		finalScore.GetComponent<Text>().text = scoreControll.GetScore().ToString();
+
 	}
 
 	void ShowBorders() {

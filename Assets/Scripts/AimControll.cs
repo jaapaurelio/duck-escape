@@ -12,7 +12,7 @@ public class AimControll : MonoBehaviour {
 		gameObject.SetActive( true );
 
 		// Coloca o objecto na posição inicial correcta
-		transform.position = new Vector3( 0.7f, 0f, 0 );
+		transform.position = new Vector3( 0f, -1.7f, 0 );
 
 		started = true;
 		moving = false;
@@ -33,13 +33,16 @@ public class AimControll : MonoBehaviour {
 
 		// No primeiro click após iniciar a cena activa a mira
 		if ( Input.GetMouseButtonDown (0) ) {
-			StartMoving();
+		 StartCoroutine( StartMoving() );
 		}
 	}
 
-	void StartMoving() {
+	public IEnumerator StartMoving() {
+
 		moving = true;
-		
+
+		yield return new WaitForSeconds( GameConsts.TimeBeforeAim );
+
 		// Aplica a força para mover a mira
 		Vector2 direction = new Vector2( 1, 1 ).normalized;
 		rigidbody2D.AddForce( direction * speed );
@@ -83,7 +86,7 @@ public class AimControll : MonoBehaviour {
 		gameObject.rigidbody2D.velocity = Vector2.zero;
 		gameObject.rigidbody2D.angularVelocity = 0;
 		
-		rigidbody2D.AddForce( direction * speed ); 
+		rigidbody2D.AddForce( direction * ( speed + GameConsts.AimFollowingDuckIncreaser ) ); 
 
 	}
 

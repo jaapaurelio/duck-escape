@@ -11,6 +11,7 @@ public class GameSceneControll : MonoBehaviour {
 	ScoreControll scoreControll;
 	DuckControll duckControll;
 	ShootControll shootControll;
+	GameManagerControll gameManagerControll;
 
 
 	void Start() {
@@ -22,8 +23,10 @@ public class GameSceneControll : MonoBehaviour {
 		scoreControll = GameObject.Find( "Score" ).GetComponent<ScoreControll>();
 		duckControll = GameObject.Find( "Duck" ).GetComponent<DuckControll>();
 		shootControll = GameObject.Find( "Shoot" ).GetComponent<ShootControll>();
+		gameManagerControll = GameObject.Find( "GameManager" ).GetComponent<GameManagerControll>();
 
 	}
+
 
 	public void StartGame() {
 
@@ -40,12 +43,14 @@ public class GameSceneControll : MonoBehaviour {
 		ShowBorders();
 
 	}
+
 	
 	void ShowBorders() {
 		// Coloca as borders para o pato morrer
 		borders.SetActive( true );
 		floors.SetActive( false );
 	}
+
 
 	void Update() {
 
@@ -67,9 +72,19 @@ public class GameSceneControll : MonoBehaviour {
 		SaveControll.control.Save();
 	}
 
+
 	void ShowFloor() {
 		// Coloca o chao para o pato bater e saltar
 		borders.SetActive( false );
 		floors.SetActive( true );
+	}
+
+
+	public void GameOver() {
+
+		scoreControll.SetHighScore();
+		scoreControll.addScore();
+		gameManagerControll.LoadGameOver();
+
 	}
 }

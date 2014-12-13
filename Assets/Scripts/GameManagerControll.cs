@@ -2,7 +2,6 @@
 using System.Collections;
 using GooglePlayGames;
 using UnityEngine.SocialPlatforms;
-using UnityEngine.UI;
 
 public class GameManagerControll : MonoBehaviour {
 	
@@ -10,10 +9,10 @@ public class GameManagerControll : MonoBehaviour {
 	GameObject mainMenuScene;
 	GameObject gameOverScene;
 	GameObject screenFader;
-	
-	ScoreControll scoreControll;
+
 	SceneFadeInOut sceneFadeInOut;
 	GameSceneControll gameSceneControll;
+	GameOverSceneControll gameOverSceneControll;
 
 	// Use this for initialization
 	void Start () {
@@ -25,10 +24,9 @@ public class GameManagerControll : MonoBehaviour {
 		mainMenuScene = GameObject.Find( "MainMenuScene" );
 		gameOverScene = GameObject.Find( "GameOverScene" );
 
-	
-		scoreControll = GameObject.Find( "Score" ).GetComponent<ScoreControll>();
 		sceneFadeInOut = GameObject.Find( "ScreenFader" ).GetComponent<SceneFadeInOut>();
 		gameSceneControll = gameScene.GetComponent<GameSceneControll>();
+		gameOverSceneControll = gameOverScene.GetComponent<GameOverSceneControll>();
 
 		SaveControll.control.Load();
 
@@ -68,20 +66,9 @@ public class GameManagerControll : MonoBehaviour {
 	}
 
 
-	public void GameOver() {
+	public void LoadGameOver() {
 		HideAllScenes();
-		gameOverScene.SetActive( true );
-		gameOverScene.transform.position = new Vector3(0, 0, -10);
-
-		scoreControll.SetHighScore();
-		scoreControll.addScore();
-
-		// TODO mover para controlador do ecra game over
-		GameObject highScore = GameObject.Find( "HighScore" );
-		GameObject finalScore = GameObject.Find( "FinalScore" );
-		highScore.GetComponent<Text>().text = scoreControll.getBestScore().ToString();
-		finalScore.GetComponent<Text>().text = scoreControll.GetScore().ToString();
-
+		gameOverSceneControll.ShowGameOver();
 	}
 
 

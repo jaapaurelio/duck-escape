@@ -33,13 +33,18 @@ public class AimControll : MonoBehaviour {
 
 		// No primeiro click após iniciar a cena activa a mira
 		if ( Input.GetMouseButtonDown (0) ) {
-			moving = true;
-			// Aplica a força para mover a mira
-			Vector2 direction = new Vector2( 1, 1 ).normalized;
-			rigidbody2D.AddForce( direction * speed );
+			StartMoving();
 		}
 	}
 
+	void StartMoving() {
+		moving = true;
+		
+		// Aplica a força para mover a mira
+		Vector2 direction = new Vector2( 1, 1 ).normalized;
+		rigidbody2D.AddForce( direction * speed );
+
+	}
 
 	public void LevelUp() {
 		speed += GameConsts.SpeedIncreaser;
@@ -66,10 +71,10 @@ public class AimControll : MonoBehaviour {
 	}
 
 
-	private void DuckColision( Collider2D coll ) {
+	private void DuckColision( Collider2D duck ) {
 		Vector3 target;
 		
-		target = coll.gameObject.transform.position;
+		target = duck.gameObject.transform.position;
 		target.z = 0;
 		
 		Vector2 direction = ( target - gameObject.transform.position ).normalized;
@@ -95,8 +100,8 @@ public class AimControll : MonoBehaviour {
 	}
 
 
-	private void WallColision( Collider2D coll ) {
-		var colliderName = coll.gameObject.name;
+	private void WallColision( Collider2D wall ) {
+		var colliderName = wall.gameObject.name;
 		
 		float yForce = 0f;
 		float xForce = 0f;

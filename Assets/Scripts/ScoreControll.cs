@@ -6,23 +6,21 @@ using GooglePlayGames;
 using UnityEngine.SocialPlatforms;
 
 public class ScoreControll : MonoBehaviour {
-
-	static float LEVEL_TIME = 5.0f;	// secconds
+	
 
 	bool started = false;
 	bool counting = false;
 	float gameTimeInSeconds = 0;
 	float currentScore = 0;
 	GameObject levelUpLabel;
-	GameObject aim;
-	AimControll aimControll;
+	GameSceneControll gameSceneControll;
 	string leaderBoardId = "CgkIrPzUj8oPEAIQBg";
 
 	public void Start() {
-		levelUpLabel = GameObject.Find( "LevelUpLabel" );
-		aim = GameObject.Find( "Aim" );
 
-		aimControll = aim.GetComponent<AimControll>();
+		levelUpLabel = GameObject.Find( "LevelUpLabel" );
+		gameSceneControll = GameObject.Find( "GameScene" ).GetComponent<GameSceneControll>();
+
 	}
 
 	// Use this for initialization
@@ -140,16 +138,18 @@ public class ScoreControll : MonoBehaviour {
 
 	void CheckLevel( float currentScore ) {
 		
-		if( currentScore % LEVEL_TIME == 0 ) {
+		if( currentScore % GameConsts.LevelTime == 0 ) {
 			LevelUp();
 		}
 		
 	}
 
+
 	void LevelUp() {
-		aimControll.LevelUp();
+		gameSceneControll.LevelUp();
 		StartCoroutine( ShowLevelUp() );
 	}
+
 
 	IEnumerator ShowLevelUp () {
 

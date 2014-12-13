@@ -27,6 +27,10 @@ public class GameSceneControll : MonoBehaviour {
 
 	}
 
+	public void LevelUp() {
+		aimControll.LevelUp();
+		duckControll.LevelUp();
+	}
 
 	public void StartGame() {
 

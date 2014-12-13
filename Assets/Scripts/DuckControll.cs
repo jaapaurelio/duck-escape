@@ -4,7 +4,7 @@ using System.Collections;
 public class DuckControll : MonoBehaviour {
 
 	bool started = false;
-	float speed = 5;
+	float speed = GameConsts.DuckInitialSpeed;
 	
 	public void StartGame () {
 
@@ -14,6 +14,8 @@ public class DuckControll : MonoBehaviour {
 
 		rigidbody2D.gravityScale = 0;
 		started = true;
+
+		speed = GameConsts.DuckInitialSpeed;
 
 	}
 	
@@ -71,6 +73,10 @@ public class DuckControll : MonoBehaviour {
 		gameObject.rigidbody2D.AddTorque( 0.5f );
 
 		rigidbody2D.gravityScale = 0.5f;
+	}
+
+	public void LevelUp() {
+		speed += GameConsts.SpeedIncreaser;
 	}
 
 

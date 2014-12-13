@@ -3465,6 +3465,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1833461569}
+  - 114: {fileID: 1833461570}
   m_Layer: 0
   m_Name: GameScene
   m_TagString: Untagged
@@ -3489,6 +3490,17 @@ Transform:
   - {fileID: 1725349246}
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &1833461570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1833461568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a8efedf2292499d95091ccee1c3e36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1835463442
 GameObject:
   m_ObjectHideFlags: 0

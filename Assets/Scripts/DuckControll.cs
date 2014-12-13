@@ -5,23 +5,14 @@ public class DuckControll : MonoBehaviour {
 
 	bool started = false;
 	float speed = 5;
-	GameObject gameHelp;
-
-	void Start(){
-		gameHelp = GameObject.Find( "GameHelp" );
-	}
-
+	
 	public void StartGame () {
 
 		// Coloca o objecto na posição inicial correcta
-
 		transform.position = new Vector3( -1f, -0.5f, 0 );
 		transform.localEulerAngles = new Vector3( 0, 0, 0 );
 
 		rigidbody2D.gravityScale = 0;
-
-		gameHelp.SetActive( true );
-
 		started = true;
 
 	}
@@ -37,10 +28,6 @@ public class DuckControll : MonoBehaviour {
 		}
 
 		if ( Input.GetMouseButtonDown (0) ) {
-
-			// esconde a ajuda
-			// TODO arranjar forma de nao fazer isto sempre que clicamos
-			gameHelp.SetActive( false );
 
 			Vector3 mouseClick = Input.mousePosition;
 			mouseClick.z = gameObject.transform.position.z - Camera.main.transform.position.z;
@@ -86,21 +73,19 @@ public class DuckControll : MonoBehaviour {
 		rigidbody2D.gravityScale = 0.5f;
 	}
 
-	void OnTriggerEnter2D(Collider2D coll) {
 
-
-		GameObject gameManager = GameObject.Find( "GameManager" );
+	void OnTriggerEnter2D( Collider2D coll ) {
 		
-		GameManagerControll gameManagerControll = gameManager.GetComponent<GameManagerControll>();
+		GameSceneControll gameSceneControll = GameObject.Find( "GameScene" ).GetComponent<GameSceneControll>();
 
 		// Quando o jogador bate na mira o jogo reinicia
 		if ( coll.gameObject.name == "AimCenter" ) {
-			gameManagerControll.Shoot();
+			gameSceneControll.EndGame();
 
 		// 12 - Borders
 		// TODO Utilizar nome da layer em vez do Id
 		} else if( coll.gameObject.layer == 12 ) {
-			gameManagerControll.Shoot();
+			gameSceneControll.EndGame();
 		}
 		
 	}

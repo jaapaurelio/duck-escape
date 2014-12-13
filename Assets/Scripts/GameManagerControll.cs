@@ -10,14 +10,10 @@ public class GameManagerControll : MonoBehaviour {
 	GameObject mainMenuScene;
 	GameObject gameOverScene;
 	GameObject screenFader;
-	GameObject borders;
-	GameObject floors;
-
-	AimControll aimControll;
+	
 	ScoreControll scoreControll;
-	DuckControll duckControll;
-	ShootControll shootControll;
 	SceneFadeInOut sceneFadeInOut;
+	GameSceneControll gameSceneControll;
 
 	// Use this for initialization
 	void Start () {
@@ -29,14 +25,10 @@ public class GameManagerControll : MonoBehaviour {
 		mainMenuScene = GameObject.Find( "MainMenuScene" );
 		gameOverScene = GameObject.Find( "GameOverScene" );
 
-		borders = GameObject.Find( "Borders" );
-		floors = GameObject.Find( "Floors" );
 	
-		aimControll = GameObject.Find( "Aim" ).GetComponent<AimControll>();
 		scoreControll = GameObject.Find( "Score" ).GetComponent<ScoreControll>();
-		duckControll = GameObject.Find( "Duck" ).GetComponent<DuckControll>();
 		sceneFadeInOut = GameObject.Find( "ScreenFader" ).GetComponent<SceneFadeInOut>();
-		shootControll = GameObject.Find( "Shoot" ).GetComponent<ShootControll>();
+		gameSceneControll = gameScene.GetComponent<GameSceneControll>();
 
 		SaveControll.control.Load();
 
@@ -71,35 +63,10 @@ public class GameManagerControll : MonoBehaviour {
 	public void StartGameScene() {
 		HideAllScenes();
 
-		sceneFadeInOut.ShowFader( StartGame );
+		sceneFadeInOut.ShowFader( gameSceneControll.StartGame );
 
 	}
 
-	public void StartGame() {
-		gameScene.SetActive( true );
-		gameScene.transform.position = new Vector3(0, 0, -10);
-		duckControll.StartGame();
-		aimControll.StartGame();
-		scoreControll.Reset();
-		scoreControll.StartGame();
-
-		ShowBorders();
-	}
-
-	public void Shoot() {
-
-		shootControll.Shoot();
-
-		ShowFloor();
-		
-		scoreControll.Stop();
-		SaveControll.control.Save();
-		aimControll.Hide();
-		duckControll.Shoot();
-
-		//gameOverScene.SetActive( true );
-
-	}
 
 	public void GameOver() {
 		HideAllScenes();
@@ -117,15 +84,5 @@ public class GameManagerControll : MonoBehaviour {
 
 	}
 
-	void ShowBorders() {
-		// Coloca as borders para o pato morrer
-		borders.SetActive( true );
-		floors.SetActive( false );
-	}
 
-	void ShowFloor() {
-		// Coloca o chao para o pato bater e saltar
-		borders.SetActive( false );
-		floors.SetActive( true );
-	}
 }

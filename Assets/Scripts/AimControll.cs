@@ -3,19 +3,10 @@ using System.Collections;
 
 public class AimControll : MonoBehaviour {
 
-
-	static float LEVEL_SPEED_INCREASE = 0.5f;
-	static float INITIAL_SPEED = 5f;
-	static float SPEED_WHEN_DUCK = 8.5f;
-
-	float speed = INITIAL_SPEED;
+	float speed = GameConsts.AimInitialSpeed;
 
 	bool started = false;
 	bool moving = false;
-
-	public void Start() {
-
-	}
 
 	public void StartGame () {
 
@@ -26,7 +17,7 @@ public class AimControll : MonoBehaviour {
 
 		started = true;
 		moving = false;
-		speed = INITIAL_SPEED;
+		speed = GameConsts.AimInitialSpeed;
 	}
 
 	void Update() {
@@ -53,7 +44,7 @@ public class AimControll : MonoBehaviour {
 
 
 	public void LevelUp() {
-		speed += LEVEL_SPEED_INCREASE;
+		speed += GameConsts.SpeedIncreaser;
 	}
 
 	void OnTriggerEnter2D(Collider2D coll) {
@@ -139,7 +130,7 @@ public class AimControll : MonoBehaviour {
 			gameObject.rigidbody2D.velocity = Vector2.zero;
 			gameObject.rigidbody2D.angularVelocity = 0;
 			
-			rigidbody2D.AddForce( direction * SPEED_WHEN_DUCK ); 
+			rigidbody2D.AddForce( direction * speed ); 
 
 		}
 

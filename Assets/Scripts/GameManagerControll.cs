@@ -8,16 +8,10 @@ public class GameManagerControll : MonoBehaviour {
 	
 	GameObject gameScene;
 	GameObject mainMenuScene;
-	GameObject aim;
-	GameObject score;
-	GameObject duck;
-	GameObject shoot;
 	GameObject gameOverScene;
 	GameObject screenFader;
-
 	GameObject borders;
 	GameObject floors;
-
 
 	AimControll aimControll;
 	ScoreControll scoreControll;
@@ -30,26 +24,19 @@ public class GameManagerControll : MonoBehaviour {
 
 		// Activate the Google Play Games platform
 		PlayGamesPlatform.Activate();
-
-		aim = GameObject.Find( "Aim" );
-		score = GameObject.Find( "Score" );
-		duck = GameObject.Find( "Duck" );
-
 		
 		gameScene = GameObject.Find( "GameScene" );
 		mainMenuScene = GameObject.Find( "MainMenuScene" );
-		screenFader = GameObject.Find( "ScreenFader" );
 		gameOverScene = GameObject.Find( "GameOverScene" );
-		shoot = GameObject.Find( "Shoot" );
 
 		borders = GameObject.Find( "Borders" );
 		floors = GameObject.Find( "Floors" );
 	
-		aimControll = aim.GetComponent<AimControll>();
-		scoreControll = score.GetComponent<ScoreControll>();
-		duckControll = duck.GetComponent<DuckControll>();
-		sceneFadeInOut = screenFader.GetComponent<SceneFadeInOut>();
-		shootControll = shoot.GetComponent<ShootControll>();
+		aimControll = GameObject.Find( "Aim" ).GetComponent<AimControll>();
+		scoreControll = GameObject.Find( "Score" ).GetComponent<ScoreControll>();
+		duckControll = GameObject.Find( "Duck" ).GetComponent<DuckControll>();
+		sceneFadeInOut = GameObject.Find( "ScreenFader" ).GetComponent<SceneFadeInOut>();
+		shootControll = GameObject.Find( "Shoot" ).GetComponent<ShootControll>();
 
 		SaveControll.control.Load();
 

@@ -121,9 +121,9 @@ public class ScoreControll : MonoBehaviour {
 
 
 		if( counting ) {
+
 			gameTimeInSeconds += Time.deltaTime;
-			
-			float gameTimeRounded = Mathf.RoundToInt( gameTimeInSeconds % 60 );
+			float gameTimeRounded = Mathf.RoundToInt( gameTimeInSeconds );
 
 			if( currentScore != gameTimeRounded ) {
 				currentScore = gameTimeRounded;

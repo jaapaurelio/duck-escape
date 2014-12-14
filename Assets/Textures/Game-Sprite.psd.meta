@@ -34,6 +34,7 @@ TextureImporter:
     21300058: Game-Sprite_28
     21300060: BackBtn
     21300062: DuckBody
+    21300064: Aim
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -262,6 +263,16 @@ TextureImporter:
         y: 324
         width: 19
         height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Aim
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 323
+        width: 64
+        height: 63
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

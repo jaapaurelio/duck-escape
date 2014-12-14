@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using GooglePlayGames;
 using UnityEngine.SocialPlatforms;
+using UnityEditor;
 
 public class ScoreControll : MonoBehaviour {
 	
@@ -11,7 +12,7 @@ public class ScoreControll : MonoBehaviour {
 	bool started = false;
 	bool counting = false;
 	float gameTimeInSeconds = 0;
-	float currentScore = 0;
+	int currentScore = 0;
 	GameObject levelUpLabel;
 	GameSceneControll gameSceneControll;
 	string leaderBoardId = "CgkIrPzUj8oPEAIQBg";
@@ -123,7 +124,7 @@ public class ScoreControll : MonoBehaviour {
 		if( counting ) {
 
 			gameTimeInSeconds += Time.deltaTime;
-			float gameTimeRounded = Mathf.RoundToInt( gameTimeInSeconds );
+			int gameTimeRounded = Mathf.RoundToInt( gameTimeInSeconds );
 
 			if( currentScore != gameTimeRounded ) {
 				currentScore = gameTimeRounded;
@@ -131,14 +132,11 @@ public class ScoreControll : MonoBehaviour {
 				CheckLevel( currentScore );
 			}
 		}
-
-
-
 	}
 
-	void CheckLevel( float currentScore ) {
-		
-		if( currentScore % GameConsts.LevelTime == 0 ) {
+	void CheckLevel( int currentScore ) {
+
+		if( ArrayUtility.Contains( GameConsts.LevelUps, currentScore ) ) {
 			LevelUp();
 		}
 		

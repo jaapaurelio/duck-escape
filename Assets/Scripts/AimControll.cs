@@ -45,12 +45,12 @@ public class AimControll : MonoBehaviour {
 
 		// Aplica a força para mover a mira
 		Vector2 direction = new Vector2( 1, 1 ).normalized;
-		rigidbody2D.AddForce( direction * speed );
+		rigidbody2D.velocity = direction * speed;
 
 	}
 
 	public void LevelUp() {
-		speed += GameConsts.SpeedIncreaser;
+		speed += GameConsts.AimLevelSpeedIncreaser;
 	}
 
 
@@ -81,12 +81,8 @@ public class AimControll : MonoBehaviour {
 		target.z = 0;
 		
 		Vector2 direction = ( target - gameObject.transform.position ).normalized;
-		
-		// Para o movimento para nao acumular forças
-		gameObject.rigidbody2D.velocity = Vector2.zero;
-		gameObject.rigidbody2D.angularVelocity = 0;
-		
-		rigidbody2D.AddForce( direction * ( speed + GameConsts.AimFollowingDuckIncreaser ) ); 
+				
+		rigidbody2D.velocity = direction * ( speed + GameConsts.AimFollowingDuckIncreaser ); 
 
 	}
 
@@ -155,12 +151,8 @@ public class AimControll : MonoBehaviour {
 		}
 		
 		Vector2 direction = new Vector2( xForce, yForce ).normalized;
-		
-		// Para o movimento para nao acumular forças
-		gameObject.rigidbody2D.velocity = Vector2.zero;
-		gameObject.rigidbody2D.angularVelocity = 0;
-		
-		rigidbody2D.AddForce( direction * speed ); 
+
+		rigidbody2D.velocity = direction * speed; 
 		
 
 	}

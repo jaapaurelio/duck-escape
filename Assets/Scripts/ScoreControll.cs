@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using GooglePlayGames;
 using UnityEngine.SocialPlatforms;
-using UnityEditor;
+using System;
 
 public class ScoreControll : MonoBehaviour {
 	
@@ -136,7 +136,8 @@ public class ScoreControll : MonoBehaviour {
 
 	void CheckLevel( int currentScore ) {
 
-		if( ArrayUtility.Contains( GameConsts.LevelUps, currentScore ) ) {
+		// É um nivel up
+		if( Array.IndexOf( GameConsts.LevelUps, currentScore ) != -1 ) {
 			LevelUp();
 		}
 		

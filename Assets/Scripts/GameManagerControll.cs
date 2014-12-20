@@ -17,8 +17,6 @@ public class GameManagerControll : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		// Activate the Google Play Games platform
-		PlayGamesPlatform.Activate();
 		
 		gameScene = GameObject.Find( "GameScene" );
 		mainMenuScene = GameObject.Find( "MainMenuScene" );
@@ -30,18 +28,6 @@ public class GameManagerControll : MonoBehaviour {
 
 		SaveControll.control.Load();
 
-
-		// authenticate user:
-		Social.localUser.Authenticate((bool success) => {
-			// handle success or failure
-			if( success ){
-				//Debug.Log("login com sucesso");				
-			}else{
-				//Debug.Log("login insucesso");
-			}
-			
-		});		
-		
 		StartMainMenuScene();
 
 	}

@@ -9,6 +9,9 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 
 	private bool mAuthenticating = false;
 
+	// what is the highest score we have posted to the leaderboard?
+	private int mHighestPostedScore = 0;
+
 	public static GameManager Instance {
 		get {
 			return sInstance;
@@ -77,6 +80,15 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 		SaveToCloud();*/
 	}
 
+
+	public void PostToLeaderboard() {
+		int score = mProgress.BestScore;
+		if (Authenticated && score > mHighestPostedScore) {
+			// post score to the leaderboard
+			Social.ReportScore(score, GameIds.LeaderboardId, (bool success) => {});
+			mHighestPostedScore = score;
+		}
+	}
 
 	#if UNITY_ANDROID || UNITY_IOS
 	public void Authenticate() {

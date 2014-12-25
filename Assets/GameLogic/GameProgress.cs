@@ -7,6 +7,8 @@ public class GameProgress {
 	// do we have modifications to write to disk/cloud?
 	private bool mDirty = false;
 
+	private int bestScore = 0;
+
 
 	public static GameProgress LoadFromDisk() {
 		string s = PlayerPrefs.GetString(PlayerPrefsKey, "");
@@ -47,6 +49,12 @@ public class GameProgress {
 		}
 		set {
 			mDirty = value;
+		}
+	}
+
+	public int BestScore {
+		get {
+			return bestScore;
 		}
 	}
 }

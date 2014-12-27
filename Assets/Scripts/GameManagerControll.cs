@@ -5,10 +5,10 @@ using UnityEngine.SocialPlatforms;
 
 public class GameManagerControll : MonoBehaviour {
 	
-	GameObject gameScene;
-	GameObject mainMenuScene;
-	GameObject gameOverScene;
-	GameObject screenFader;
+	public GameObject gameScene;
+	public GameObject mainMenuScene;
+	public GameObject gameOverScene;
+	public GameObject screenFader;
 
 	SceneFadeInOut sceneFadeInOut;
 	GameSceneControll gameSceneControll;
@@ -17,19 +17,13 @@ public class GameManagerControll : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		
-		gameScene = GameObject.Find( "GameScene" );
-		mainMenuScene = GameObject.Find( "MainMenuScene" );
-		gameOverScene = GameObject.Find( "GameOverScene" );
-
-		sceneFadeInOut = GameObject.Find( "ScreenFader" ).GetComponent<SceneFadeInOut>();
+		sceneFadeInOut = screenFader.GetComponent<SceneFadeInOut>();
 		gameSceneControll = gameScene.GetComponent<GameSceneControll>();
 		gameOverSceneControll = gameOverScene.GetComponent<GameOverSceneControll>();
 
-		SaveControll.control.Load();
-
 		StartMainMenuScene();
 
+		GameManager.Instance.Authenticate();
 	}
 
 	void HideAllScenes() {
@@ -46,7 +40,6 @@ public class GameManagerControll : MonoBehaviour {
 
 	public void StartGameScene() {
 		HideAllScenes();
-
 		sceneFadeInOut.ShowFader( gameSceneControll.StartGame );
 
 	}

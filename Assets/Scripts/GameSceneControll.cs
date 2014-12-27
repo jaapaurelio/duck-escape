@@ -10,7 +10,6 @@ public class GameSceneControll : MonoBehaviour {
 	AimControll aimControll;
 	ScoreControll scoreControll;
 	DuckControll duckControll;
-	ShootControll shootControll;
 	GameManagerControll gameManagerControll;
 
 
@@ -22,7 +21,6 @@ public class GameSceneControll : MonoBehaviour {
 		aimControll = GameObject.Find( "Aim" ).GetComponent<AimControll>();
 		scoreControll = GameObject.Find( "Score" ).GetComponent<ScoreControll>();
 		duckControll = GameObject.Find( "Duck" ).GetComponent<DuckControll>();
-		shootControll = GameObject.Find( "Shoot" ).GetComponent<ShootControll>();
 		gameManagerControll = GameObject.Find( "GameManager" ).GetComponent<GameManagerControll>();
 
 	}
@@ -65,15 +63,14 @@ public class GameSceneControll : MonoBehaviour {
 
 	
 	public void EndGame() {
-		
-		shootControll.Shoot();
-		
+	
 		ShowFloor();
-		
 		scoreControll.Stop();
-		aimControll.Hide();
+		aimControll.Shoot();
 		duckControll.Shoot();
-		SaveControll.control.Save();
+		GameManager.Instance.EndLevel( scoreControll.GetScore() );
+
+
 	}
 
 
@@ -85,9 +82,6 @@ public class GameSceneControll : MonoBehaviour {
 
 
 	public void GameOver() {
-
-		scoreControll.SetHighScore();
-		scoreControll.addScore();
 		gameManagerControll.LoadGameOver();
 
 	}

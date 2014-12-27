@@ -15,7 +15,6 @@ public class ScoreControll : MonoBehaviour {
 	int currentScore = 0;
 	GameObject levelUpLabel;
 	GameSceneControll gameSceneControll;
-	string leaderBoardId = "CgkIrPzUj8oPEAIQBg";
 
 	public void Start() {
 
@@ -32,7 +31,7 @@ public class ScoreControll : MonoBehaviour {
 	}
 
 	// Get score value
-	public float GetScore() {
+	public int GetScore() {
 		return currentScore;
 	}
 
@@ -61,50 +60,7 @@ public class ScoreControll : MonoBehaviour {
 		counting = false;
 	}
 	
-	// Get highscore
-	public float getBestScore() {
-		return SaveControll.control.highScore;
-	}
-	
-	// Get total scores
-	public float getTotalScores() {
-		return SaveControll.control.totalScore;
-	}
 
-	public void SetHighScore(){
-		long scoreL = (long) currentScore;
-
-		if( currentScore > SaveControll.control.highScore ) {
-			SaveControll.control.highScore = currentScore;
-
-			// Set highscore to the leaderboard of google play services
-			Social.ReportScore( scoreL, leaderBoardId, (bool success) => {
-				// adicionado
-			});
-		}
-	}
-	
-	// Add scores
-	public void addScore(){
-		
-		// set total score
-		SaveControll.control.totalScore += currentScore;
-		// add scores to list
-		//SaveControll.control.scoreList.Add (currentScore);
-
-		//totalScore.GetComponent<Text>().text = getTotalScores().ToString();
-		
-	}
-	
-	// Add scores
-	void getScores(){
-		
-		//foreach (float value in SaveControll.control.scoreList) {
-		//	Debug.Log( "value " + value );
-		//}
-		
-	}
-	
 	// Update is called once per frame
 	void Update() {
 	

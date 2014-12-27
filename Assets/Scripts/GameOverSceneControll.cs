@@ -15,8 +15,8 @@ public class GameOverSceneControll : MonoBehaviour {
 		gameObject.SetActive( true );
 		transform.position = new Vector3(0, 0, -10);
 
-		GameObject.Find( "HighScore" ).GetComponent<Text>().text = scoreControll.getBestScore().ToString();
 		GameObject.Find( "FinalScore" ).GetComponent<Text>().text = scoreControll.GetScore().ToString();
+		GameObject.Find( "HighScore" ).GetComponent<Text>().text = GameManager.Instance.Progress.BestScore.ToString();
 
 	}
 

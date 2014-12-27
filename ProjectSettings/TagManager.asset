@@ -4,6 +4,8 @@
 TagManager:
   tags:
   - Fader
+  - Duck
+  - KillDuck
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -53,4 +55,8 @@ TagManager:
   - name: Player
     userID: 2
     uniqueID: 379027845
+    locked: 0
+  - name: Aim
+    userID: 4
+    uniqueID: 2821577567
     locked: 0

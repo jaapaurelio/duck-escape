@@ -20,6 +20,17 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 
 	private GameManager() {
 		mProgress = GameProgress.LoadFromDisk();
+
+		// Enable/disable logs on the PlayGamesPlatform
+		PlayGamesPlatform.DebugLogEnabled = GameConsts.PlayGamesDebugLogsEnabled;
+		
+		// Activate the Play Games platform. This will make it the default
+		// implementation of Social.Active
+		PlayGamesPlatform.Activate();
+		
+		// Set the default leaderboard for the leaderboards UI
+		((PlayGamesPlatform) Social.Active).SetDefaultLeaderboardForUI( GameIds.LeaderboardId );
+
 	}
 
 	// Data was successfully loaded from the cloud
@@ -97,23 +108,15 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 			return;
 		}
 		
-		// Enable/disable logs on the PlayGamesPlatform
-		PlayGamesPlatform.DebugLogEnabled = GameConsts.PlayGamesDebugLogsEnabled;
-		
-		// Activate the Play Games platform. This will make it the default
-		// implementation of Social.Active
-		PlayGamesPlatform.Activate();
-		
-		// Set the default leaderboard for the leaderboards UI
-		((PlayGamesPlatform) Social.Active).SetDefaultLeaderboardForUI(GameIds.LeaderboardId);
-		
 		// Sign in to Google Play Games
 		mAuthenticating = true;
 		Social.localUser.Authenticate((bool success) => {
 			mAuthenticating = false;
 			if (success) {
 				// if we signed in successfully, load data from cloud
-				LoadFromCloud();
+
+				// TODO Carregar dados guardados
+				//LoadFromCloud();
 			} else {
 				// no need to show error message (error messages are shown automatically
 				// by plugin)
@@ -133,10 +136,28 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 		}
 	}
 
-	void LoadFromCloud() {
-		// Cloud save is not in ISocialPlatform, it's a Play Games extension,
-		// so we have to break the abstraction and use PlayGamesPlatform:
-		Debug.Log("Loading game progress from the cloud.");
-		((PlayGamesPlatform) Social.Active).LoadState(0, this);
+	public void EndLevel( int score ) {
+		mProgress.SetScore( score );
+
+		if( mProgress.Dirty ) {
+			mProgress.SaveToDisk();
+		}
+
+		PostToLeaderboard();
 	}
+
+	public GameProgress Progress {
+		get {
+			return mProgress;
+		}
+	}
+
+	public void ShowLeaderboardUI() {
+		if (Authenticated) {
+			Social.ShowLeaderboardUI();
+		} else {
+			Authenticate();
+		}
+	}
+	
 }

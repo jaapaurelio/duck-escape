@@ -90,6 +90,7 @@ public class DuckControll : MonoBehaviour {
 
 	}
 
+
 	public void LevelUp() {
 		speed += GameConsts.DuckLevelSpeedIncrease;
 	}
@@ -99,13 +100,9 @@ public class DuckControll : MonoBehaviour {
 		
 		GameSceneControll gameSceneControll = GameObject.Find( "GameScene" ).GetComponent<GameSceneControll>();
 
-		// Quando o jogador bate na mira o jogo reinicia
-		if ( coll.gameObject.name == "AimCenter" ) {
-			gameSceneControll.EndGame();
-
 		// 12 - Borders
-		// TODO Utilizar nome da layer em vez do Id
-		} else if( coll.gameObject.layer == 12 ) {
+		// TODO Utilizar nome da tag em vez do Id
+		if( coll.gameObject.layer == 12 ) {
 			gameSceneControll.EndGame();
 		}
 		

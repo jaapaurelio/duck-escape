@@ -6,9 +6,9 @@ public class AimControll : MonoBehaviour {
 	float speed = GameConsts.AimInitialSpeed;
 	bool started = false;
 	bool moving = false;
-
+	
 	public void StartGame () {
-
+		 
 		gameObject.SetActive( true );
 
 		// Coloca o objecto na posição inicial correcta
@@ -33,7 +33,7 @@ public class AimControll : MonoBehaviour {
 
 		// No primeiro click após iniciar a cena activa a mira
 		if ( Input.GetMouseButtonDown (0) ) {
-		 StartCoroutine( StartMoving() );
+			StartCoroutine( StartMoving() );
 		}
 	}
 
@@ -59,17 +59,16 @@ public class AimControll : MonoBehaviour {
 		if ( isWallColision( coll ) ) {
 			WallColision( coll );
 
-		} else if( isDuckColision( coll )  ) {
+		} else if( isDuck( coll )  ) {
 			DuckColision( coll );
 		}
 
 	}
 
 
-	private bool isDuckColision( Collider2D coll ) {
-		var colliderName = coll.gameObject.name;
+	private bool isDuck( Collider2D coll ) {
 
-		return colliderName == "Duck";
+		return coll.gameObject.name == "Duck";
 
 	}
 
@@ -82,10 +81,12 @@ public class AimControll : MonoBehaviour {
 		
 		Vector2 direction = ( target - gameObject.transform.position ).normalized;
 				
-		rigidbody2D.velocity = direction * ( speed + GameConsts.AimFollowingDuckIncreaser ); 
+		rigidbody2D.velocity = direction * ( speed + GameConsts.AimFollowingDuckIncreaser );
+
+		//PrepareToShoot();
 
 	}
-
+	
 
 	private bool isWallColision( Collider2D coll ) {
 		var colliderName = coll.gameObject.name;
@@ -157,10 +158,13 @@ public class AimControll : MonoBehaviour {
 
 	}
 
-	public void Hide() {
-		gameObject.SetActive( false );
+	public void Shoot() {
+
 		started = false;
 		moving = false;
+
+		gameObject.SetActive( false );
 	}
+
 
 }

@@ -11,26 +11,35 @@ public class GameProgress {
 
 
 	public static GameProgress LoadFromDisk() {
+
 		string s = PlayerPrefs.GetString(PlayerPrefsKey, "");
+
 		if (s == null || s.Trim().Length == 0) {
 			return new GameProgress();
 		}
+
 		return GameProgress.FromString(s);
 	}
 
+
+	public void SaveToDisk() {
+		PlayerPrefs.SetString(PlayerPrefsKey, ConvertToString() );
+		mDirty = false;
+	}
+
+	private String ConvertToString() {
+		return "" + bestScore;
+	}
 	
 	public static GameProgress FromBytes(byte[] b) {
 		return GameProgress.FromString(System.Text.ASCIIEncoding.Default.GetString(b));
 	}
 
 
-	public static GameProgress FromString(string s) {
+	public static GameProgress FromString( string s ) {
 		GameProgress gp = new GameProgress();
-		string[] p = s.Split(new char[] { ':' });
-		if (!p[0].Equals("GPv2")) {
-			Debug.LogError("Failed to parse game progress from: " + s);
-			return gp;
-		}
+
+		gp.bestScore = System.Convert.ToInt32( s );
 
 		return gp;
 	}
@@ -56,5 +65,14 @@ public class GameProgress {
 		get {
 			return bestScore;
 		}
+	}
+
+	public void SetScore( int score ) {
+
+		if( score > bestScore ) {
+			bestScore = score;
+			mDirty = true;
+		}
+
 	}
 }

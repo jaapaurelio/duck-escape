@@ -91,13 +91,8 @@ public class AimControll : MonoBehaviour {
 	
 
 	private bool isWallColision( Collider2D coll ) {
-		var colliderName = coll.gameObject.name;
 
-		// TODO Utilizar uma tag em vez de nomes individuais
-		return colliderName == "BorderTop" ||
-		    	colliderName == "BorderBottom" ||
-		    	colliderName == "BorderRight" ||
-				colliderName == "BorderLeft";
+		return coll.gameObject.tag == "Border";
 
 	}
 

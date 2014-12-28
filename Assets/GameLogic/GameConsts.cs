@@ -4,7 +4,7 @@ using System.Collections;
 public class GameConsts {
 
 	// Play Games plugin debug logs enabled?
-	public const bool PlayGamesDebugLogsEnabled = false;
+	public const bool PlayGamesDebugLogsEnabled = true;
 
 	public const float AimInitialSpeed = 1.4f;
 	public const float AimLevelSpeedIncreaser = 0.2f;

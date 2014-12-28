@@ -462,7 +462,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -4, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400012}
@@ -755,6 +755,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2922d6c0d847a482b8d851628260a2ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TouchSound: {fileID: 8300000, guid: 62107f769b8624c508ad9c7ede7fccd2, type: 3}
+  HitWallSound: {fileID: 8300000, guid: 7522a97ca4ebe4440823b03b91bc2b22, type: 3}
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -766,6 +768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0575434fe93394afd9ee1db7dc324a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aimAlertSound: {fileID: 8300000, guid: 1dcbfc52be5b9428e837deacbdc14e6f, type: 3}
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -788,6 +791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b3d2fea39b9e4ff58d8611ac63a0016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShootSound: {fileID: 8300000, guid: 85485418517374efcab5fa5df89d0207, type: 3}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

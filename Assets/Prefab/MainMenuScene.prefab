@@ -45,6 +45,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400004}
   - 95: {fileID: 9500000}
+  - 114: {fileID: 11499046}
   m_Layer: 0
   m_Name: MainMenuScene
   m_TagString: Untagged
@@ -196,6 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 410ce6fc072a74973bbfa3be9b877eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UiBeepFx: {fileID: 8300000, guid: 1fa94f834f8c943078a4a82fa4c0d3f2, type: 3}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -205,6 +207,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5676fe947ca77134ca7f3168936cbb8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UiBeepFx: {fileID: 8300000, guid: 1fa94f834f8c943078a4a82fa4c0d3f2, type: 3}
+--- !u!114 &11499046
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c3f278df59df4640a37f1332ff36a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &21200000

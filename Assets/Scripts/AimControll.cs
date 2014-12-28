@@ -6,7 +6,9 @@ public class AimControll : MonoBehaviour {
 	float speed = GameConsts.AimInitialSpeed;
 	bool started = false;
 	bool moving = false;
-	
+
+	public AudioClip aimAlertSound;
+
 	public void StartGame () {
 		 
 		gameObject.SetActive( true );
@@ -60,6 +62,8 @@ public class AimControll : MonoBehaviour {
 			WallColision( coll );
 
 		} else if( isDuck( coll )  ) {
+
+			AudioSource.PlayClipAtPoint( aimAlertSound, Vector3.zero );
 			DuckColision( coll );
 		}
 
@@ -82,8 +86,6 @@ public class AimControll : MonoBehaviour {
 		Vector2 direction = ( target - gameObject.transform.position ).normalized;
 				
 		rigidbody2D.velocity = direction * ( speed + GameConsts.AimFollowingDuckIncreaser );
-
-		//PrepareToShoot();
 
 	}
 	

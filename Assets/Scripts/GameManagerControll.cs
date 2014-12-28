@@ -23,7 +23,6 @@ public class GameManagerControll : MonoBehaviour {
 
 		StartMainMenuScene();
 
-		GameManager.Instance.Authenticate();
 	}
 
 	void HideAllScenes() {

@@ -3,9 +3,9 @@ using System.Collections;
 using GooglePlayGames;
 using UnityEngine.SocialPlatforms;
 
-public class RankingButton : MonoBehaviour {
+public class RankingButton : Button {
 
-	void OnMouseDown () {
+	public override void OnButtonClick() {
 
 		GameManager.Instance.ShowLeaderboardUI();
 

@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayButton : MonoBehaviour {
+public class PlayButton : Button {
 
-	void OnMouseDown () {
+	public override void OnButtonClick() {
+
 		GameObject gameManager = GameObject.Find( "GameManager" );
 
 		GameManagerControll gameManagerControll = gameManager.GetComponent<GameManagerControll>();

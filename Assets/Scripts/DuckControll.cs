@@ -7,6 +7,9 @@ public class DuckControll : MonoBehaviour {
 	float speed = GameConsts.DuckInitialSpeed;
 	Vector2 direction;
 
+	public AudioClip TouchSound;
+	public AudioClip HitWallSound;
+
 	public void StartGame () {
 
 		// Coloca o objecto na posição inicial correcta
@@ -29,10 +32,12 @@ public class DuckControll : MonoBehaviour {
 		if( !started ) {
 			return;
 		}
-		
+
 		int i = 0;
 
-		while (i < Input.touchCount ) {
+		while ( i < Input.touchCount ) {
+
+			// Verifica se é um dedo novo para mudar de direção
 			if (Input.GetTouch(i).phase == TouchPhase.Began) {
 				Vector3 target;
 				var touch = Input.GetTouch(i);
@@ -58,7 +63,9 @@ public class DuckControll : MonoBehaviour {
 				}
 				
 				transform.localEulerAngles = new Vector3( 0, rotationY, rotationZ );
-				
+
+				AudioSource.PlayClipAtPoint( TouchSound, Vector3.zero );
+
 			}
 
 			i++;
@@ -97,13 +104,18 @@ public class DuckControll : MonoBehaviour {
 
 
 	void OnTriggerEnter2D( Collider2D coll ) {
-		
-		GameSceneControll gameSceneControll = GameObject.Find( "GameScene" ).GetComponent<GameSceneControll>();
 
 		// 12 - Borders
 		// TODO Utilizar nome da tag em vez do Id
 		if( coll.gameObject.layer == 12 ) {
+
+			AudioSource.PlayClipAtPoint( HitWallSound, Vector3.zero );
+
+			GameSceneControll gameSceneControll = GameObject.Find( "GameScene" ).GetComponent<GameSceneControll>();
+			GameObject.Find( "Shoot" ).GetComponent<ShootControll>().Shoot();
+
 			gameSceneControll.EndGame();
+
 		}
 		
 	}

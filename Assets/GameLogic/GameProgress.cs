@@ -11,7 +11,7 @@ public class GameProgress {
 
 
 	public static GameProgress LoadFromDisk() {
-
+		PlayerPrefs.SetString(PlayerPrefsKey, "0" );
 		string s = PlayerPrefs.GetString(PlayerPrefsKey, "");
 
 		if (s == null || s.Trim().Length == 0) {

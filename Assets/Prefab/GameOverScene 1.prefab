@@ -429,7 +429,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9375c894c648f4ac58a024218a9750a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireworkPrefab: {fileID: 457808, guid: 4b197114e122b4ec490e90fa36e00bc3, type: 2}
+  FireworkEffect: {fileID: 19857808, guid: 4b197114e122b4ec490e90fa36e00bc3, type: 2}
+  FireworkSound: {fileID: 8300000, guid: 8ed1de9a2c97f4172a7f3a741d31f81c, type: 3}
 --- !u!114 &11485064
 MonoBehaviour:
   m_ObjectHideFlags: 1

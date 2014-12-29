@@ -92,8 +92,8 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 	}
 
 
-	public void PostToLeaderboard() {
-		int score = mProgress.BestScore;
+	public void PostToLeaderboard( int score ) {
+
 		if (Authenticated && score > mHighestPostedScore) {
 			// post score to the leaderboard
 			Social.ReportScore(score, GameIds.LeaderboardId, (bool success) => {});
@@ -143,7 +143,7 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 			mProgress.SaveToDisk();
 		}
 
-		PostToLeaderboard();
+		PostToLeaderboard( score );
 	}
 
 	public GameProgress Progress {

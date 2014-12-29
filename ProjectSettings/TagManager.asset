@@ -49,6 +49,10 @@ TagManager:
     userID: 1
     uniqueID: 1121765251
     locked: 0
+  - name: Particles
+    userID: 5
+    uniqueID: 825158671
+    locked: 0
   - name: GameUi
     userID: 3
     uniqueID: 3905232999

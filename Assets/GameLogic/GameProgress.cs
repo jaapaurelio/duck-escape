@@ -67,12 +67,17 @@ public class GameProgress {
 		}
 	}
 
-	public void SetScore( int score ) {
+	// Return true when is a new best score
+	public bool SetScore( int score ) {
 
 		if( score > bestScore ) {
 			bestScore = score;
 			mDirty = true;
+
+			return true;
 		}
+
+		return false;
 
 	}
 }

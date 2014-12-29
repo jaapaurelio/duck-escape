@@ -9,6 +9,8 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 
 	private bool mAuthenticating = false;
 
+	private bool isBestScore = false;
+
 	// what is the highest score we have posted to the leaderboard?
 	private int mHighestPostedScore = 0;
 
@@ -137,7 +139,7 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 	}
 
 	public void EndLevel( int score ) {
-		mProgress.SetScore( score );
+		isBestScore = mProgress.SetScore( score );
 
 		if( mProgress.Dirty ) {
 			mProgress.SaveToDisk();
@@ -149,6 +151,12 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 	public GameProgress Progress {
 		get {
 			return mProgress;
+		}
+	}
+
+	public bool IsBestScore {
+		get {
+			return isBestScore;
 		}
 	}
 

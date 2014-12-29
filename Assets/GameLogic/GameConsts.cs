@@ -17,8 +17,7 @@ public class GameConsts {
 	public const float DuckSpeedIncrease = 0.5f;
 	
 	public static float LevelTime = 20.0f;	// secconds
-	public static int[] LevelUps = { 20, 40, 60, 100, 160, 260 };	// secconds
+	public static int[] LevelUps = { 20, 40, 60, 80 };	// secconds
 	public static float TimeBeforeAim = 2.0f;	// secconds
-
-
+	
 }

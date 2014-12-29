@@ -8,10 +8,13 @@ public class GameOverSceneControll : MonoBehaviour {
 	public ParticleSystem FireworkEffect;
 	public AudioClip FireworkSound;
 
+	private GameObject newScoreNotification;
+
 	private float timeToNewFirework = 0;
 	
 	void Start() {
 		scoreControll = GameObject.Find( "Score" ).GetComponent<ScoreControll>();
+		newScoreNotification = GameObject.Find( "NewScoreNotification" );
 	}
 
 	void Update() {
@@ -22,8 +25,15 @@ public class GameOverSceneControll : MonoBehaviour {
 	}
 	public void ShowGameOver() {
 
+
 		gameObject.SetActive( true );
 		transform.position = new Vector3(0, 0, -10);
+
+		if( GameManager.Instance.IsBestScore ) {
+			newScoreNotification.SetActive( true );
+		} else {
+			newScoreNotification.SetActive( false );
+		}
 
 		GameObject.Find( "FinalScore" ).GetComponent<Text>().text = scoreControll.GetScore().ToString();
 		GameObject.Find( "HighScore" ).GetComponent<Text>().text = GameManager.Instance.Progress.BestScore.ToString();

@@ -7,8 +7,6 @@ public class AimControll : MonoBehaviour {
 	bool started = false;
 	bool moving = false;
 
-	public AudioClip aimAlertSound;
-
 	public void StartGame () {
 		 
 		gameObject.SetActive( true );
@@ -54,45 +52,17 @@ public class AimControll : MonoBehaviour {
 	public void LevelUp() {
 		speed += GameConsts.AimLevelSpeedIncreaser;
 	}
-
-
-	void OnTriggerEnter2D( Collider2D coll ) {
-
-		if ( isWallColision( coll ) ) {
-			WallColision( coll );
-
-		} else if( isDuck( coll )  ) {
-
-			AudioSource.PlayClipAtPoint( aimAlertSound, Vector3.zero );
-			DuckColision( coll );
-		}
-
-	}
-
-
-	private bool isDuck( Collider2D coll ) {
-
-		return coll.gameObject.name == "Duck";
-
-	}
-
+	
 
 	private void DuckColision( Collider2D duck ) {
 		Vector3 target;
-		
+
 		target = duck.gameObject.transform.position;
 		target.z = 0;
 		
 		Vector2 direction = ( target - gameObject.transform.position ).normalized;
 				
 		rigidbody2D.velocity = direction * ( speed + GameConsts.AimFollowingDuckIncreaser );
-
-	}
-	
-
-	private bool isWallColision( Collider2D coll ) {
-
-		return coll.gameObject.tag == "Border";
 
 	}
 
@@ -104,8 +74,6 @@ public class AimControll : MonoBehaviour {
 		float xForce = 0f;
 		float xOriginal = gameObject.rigidbody2D.velocity.x;
 		float yOriginal = gameObject.rigidbody2D.velocity.y;
-		float minRange = 0.2f;
-		float maxRange = 3f;
 		
 		if( colliderName == "BorderTop" || colliderName == "BorderBottom" ) {
 			
@@ -118,8 +86,8 @@ public class AimControll : MonoBehaviour {
 				yForce = 1f;
 			}
 			
-			xForce = Random.Range( minRange, maxRange );
-			
+			xForce = Random.Range( GameConsts.MinRamdomDirection, GameConsts.MaxRamdomDirection );
+
 			// Inverte a direção da força para continuar a andar na mesma direção
 			if( xOriginal < 0 ) {
 				xForce = -xForce;
@@ -139,19 +107,20 @@ public class AimControll : MonoBehaviour {
 				xForce = 1f;
 			}
 			
-			yForce = Random.Range( minRange, maxRange );
-			
+			yForce = Random.Range( GameConsts.MinRamdomDirection, GameConsts.MaxRamdomDirection );
+
 			// Inverte a direção da força para continuar a andar na mesma direção
 			if( yOriginal < 0 ) {
 				yForce = -yForce;
 			}
-			
+
 		}
 		
 		Vector2 direction = new Vector2( xForce, yForce ).normalized;
 
 		rigidbody2D.velocity = direction * speed; 
-		
+
+
 
 	}
 

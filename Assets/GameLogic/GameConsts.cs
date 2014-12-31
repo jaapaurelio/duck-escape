@@ -7,13 +7,13 @@ public class GameConsts {
 	public const bool PlayGamesDebugLogsEnabled = false;
 
 	public const float AimInitialSpeed = 1.5f;
-	public const float AimLevelSpeedIncreaser = 0.3f;
+	public const float AimLevelSpeedIncreaser = 0.25f;
 	public const float AimFollowingDuckIncreaser = 0.4f;
 	public const float MinRamdomDirection = 0.1f;
 	public const float MaxRamdomDirection = 0.4f;
 
 	public const float DuckInitialSpeed = 1.4f;
-	public const float DuckLevelSpeedIncrease = 0.3f;
+	public const float DuckLevelSpeedIncrease = 0.25f;
 	public const float DuckSpeedIncrease = 0.4f;
 	
 	public static float LevelTime = 20.0f;	// secconds

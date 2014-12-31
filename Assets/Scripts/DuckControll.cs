@@ -70,6 +70,8 @@ public class DuckControll : MonoBehaviour {
 
 			i++;
 
+
+
 		}
 	}
 

@@ -11,6 +11,8 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 
 	private bool isBestScore = false;
 
+	private bool isSoundActive = true;
+
 	// what is the highest score we have posted to the leaderboard?
 	private int mHighestPostedScore = 0;
 
@@ -19,7 +21,7 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 			return sInstance;
 		}
 	}
-
+	
 	private GameManager() {
 		mProgress = GameProgress.LoadFromDisk();
 
@@ -157,6 +159,12 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 	public bool IsBestScore {
 		get {
 			return isBestScore;
+		}
+	}
+
+	public bool IsSoundActive {
+		get {
+			return isSoundActive;
 		}
 	}
 

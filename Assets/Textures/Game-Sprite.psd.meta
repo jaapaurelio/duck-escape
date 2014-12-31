@@ -25,8 +25,8 @@ TextureImporter:
     21300040: ScoreBoard
     21300042: RankingBtn
     21300044: GameOverTitle
-    21300046: Game-Sprite_22
-    21300048: Game-Sprite_23
+    21300046: SoundMute
+    21300048: AimPoint
     21300050: Game-Sprite_24
     21300052: Game-Sprite_25
     21300054: Game-Sprite_26
@@ -36,6 +36,7 @@ TextureImporter:
     21300062: DuckBody
     21300064: Aim
     21300066: AimCenter
+    21300068: SoundBtn
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -270,20 +271,50 @@ TextureImporter:
     - name: Aim
       rect:
         serializedVersion: 2
-        x: 93
-        y: 323
-        width: 64
-        height: 63
+        x: 88
+        y: 314
+        width: 73
+        height: 73
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: AimCenter
       rect:
         serializedVersion: 2
-        x: 117
-        y: 346
-        width: 16
-        height: 16
+        x: 167
+        y: 372
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SoundBtn
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 301
+        width: 25
+        height: 17
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SoundMute
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 305
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: AimPoint
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 367
+        width: 2
+        height: 2
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

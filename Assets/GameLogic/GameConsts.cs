@@ -12,9 +12,9 @@ public class GameConsts {
 	public const float MinRamdomDirection = 0.1f;
 	public const float MaxRamdomDirection = 0.4f;
 
-	public const float DuckInitialSpeed = 1.35f;
+	public const float DuckInitialSpeed = 1.4f;
 	public const float DuckLevelSpeedIncrease = 0.3f;
-	public const float DuckSpeedIncrease = 0.55f;
+	public const float DuckSpeedIncrease = 0.4f;
 	
 	public static float LevelTime = 20.0f;	// secconds
 	public static int[] LevelUps = { 20, 40, 80, 160, 320, 640, 1280 };	// secconds

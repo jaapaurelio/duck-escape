@@ -19,5 +19,9 @@ public class GameConsts {
 	public static float LevelTime = 20.0f;	// secconds
 	public static int[] LevelUps = { 20, 40, 80, 160, 320, 640, 1280 };	// secconds
 	public static float TimeBeforeAim = 2.0f;	// secconds
-	
+
+	// Share Message
+	public static string AppLinkAndroid = "http://goo.gl/Eo2S0Z";
+	public static string ShareMessage = "Duck Escape is a fun game to play. Try it. " + AppLinkAndroid + " #duckescape";
+
 }

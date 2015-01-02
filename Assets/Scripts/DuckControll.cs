@@ -10,6 +10,13 @@ public class DuckControll : MonoBehaviour {
 	public AudioClip TouchSound;
 	public AudioClip HitWallSound;
 
+	private Animator animator;    
+
+
+	public void Start(){
+		animator = GetComponent<Animator>();
+	}
+
 	public void StartGame () {
 
 		// Coloca o objecto na posição inicial correcta
@@ -21,7 +28,9 @@ public class DuckControll : MonoBehaviour {
 
 		speed = GameConsts.DuckInitialSpeed;
 		direction = Vector2.zero;
-		
+
+		animator.SetBool( "goFast", false );
+
 	}
 
 
@@ -33,46 +42,53 @@ public class DuckControll : MonoBehaviour {
 			return;
 		}
 
-		int i = 0;
+		if( Input.touchCount > 0) {
 
-		while ( i < Input.touchCount ) {
+			int i = 0;
+			while ( i < Input.touchCount ) {
+				
+				// Verifica se é um dedo novo para mudar de direção
+				if (Input.GetTouch(i).phase == TouchPhase.Began) {
+					Vector3 target;
+					var touch = Input.GetTouch(i);
+					
+					target = Camera.main.ScreenToWorldPoint( new Vector3(touch.position.x, touch.position.y, 0.0f ) );
+					target.z = 0;
+					
+					direction = ( target - transform.position ).normalized;
+					
+					// Roda o pato dna direção do clique
+					Vector3 duckPosition = gameObject.transform.position;
+					int rotationY = 0;
+					int rotationZ = 0;
+					
+					if( target.x <  duckPosition.x ) {
+						rotationY = 180;
+					}
+					
+					if ( target.y < duckPosition.y ) {
+						rotationZ = -5;
+					} else {
+						rotationZ = 5;
+					}
+					
+					transform.localEulerAngles = new Vector3( 0, rotationY, rotationZ );
+					
+					AudioSource.PlayClipAtPoint( TouchSound, Vector3.zero );
+				
+					animator.SetBool( "goFast", true );
 
-			// Verifica se é um dedo novo para mudar de direção
-			if (Input.GetTouch(i).phase == TouchPhase.Began) {
-				Vector3 target;
-				var touch = Input.GetTouch(i);
-				
-				target = Camera.main.ScreenToWorldPoint( new Vector3(touch.position.x, touch.position.y, 0.0f ) );
-				target.z = 0;
-				
-				direction = ( target - transform.position ).normalized;
-				
-				// Roda o pato dna direção do clique
-				Vector3 duckPosition = gameObject.transform.position;
-				int rotationY = 0;
-				int rotationZ = 0;
-				
-				if( target.x <  duckPosition.x ) {
-					rotationY = 180;
 				}
 				
-				if ( target.y < duckPosition.y ) {
-					rotationZ = -5;
-				} else {
-					rotationZ = 5;
-				}
-				
-				transform.localEulerAngles = new Vector3( 0, rotationY, rotationZ );
-
-				AudioSource.PlayClipAtPoint( TouchSound, Vector3.zero );
+				i++;
 
 			}
-
-			i++;
-
-
-
+		
+		// Não existe toque
+		} else {
+			animator.SetBool( "goFast", false );
 		}
+
 	}
 
 	void FixedUpdate() {
@@ -96,7 +112,7 @@ public class DuckControll : MonoBehaviour {
 		started = false;
 		rigidbody2D.AddTorque( 0.3f );
 		rigidbody2D.gravityScale = 0.5f;
-
+		animator.SetBool( "goFast", false );
 	}
 
 

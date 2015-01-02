@@ -27,7 +27,7 @@ TextureImporter:
     21300044: GameOverTitle
     21300046: SoundMute
     21300048: AimPoint
-    21300050: Game-Sprite_24
+    21300050: DuckEyeSpeed
     21300052: Game-Sprite_25
     21300054: Game-Sprite_26
     21300056: Game-Sprite_27
@@ -315,6 +315,16 @@ TextureImporter:
         y: 367
         width: 2
         height: 2
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DuckEyeSpeed
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 307
+        width: 8
+        height: 11
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

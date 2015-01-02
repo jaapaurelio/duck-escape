@@ -166,6 +166,9 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 		get {
 			return isSoundActive;
 		}
+		set {
+			isSoundActive = value;
+		}
 	}
 
 	public void ShowLeaderboardUI() {

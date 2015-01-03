@@ -8,7 +8,7 @@ public class GameProgress {
 	private bool mDirty = false;
 
 	private int bestScore = 0;
-
+	private int lastScore = 0;
 
 	public static GameProgress LoadFromDisk() {
 
@@ -67,8 +67,16 @@ public class GameProgress {
 		}
 	}
 
+	public int LastScore {
+		get {
+			return lastScore;
+		}
+	}
+
 	// Return true when is a new best score
 	public bool SetScore( int score ) {
+
+		lastScore = score;
 
 		if( score > bestScore ) {
 			bestScore = score;

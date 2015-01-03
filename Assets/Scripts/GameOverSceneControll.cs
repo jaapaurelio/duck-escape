@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 public class GameOverSceneControll : MonoBehaviour {
 
-	ScoreControll scoreControll;
+	public GoogleAnalyticsV3 googleAnalytics;
+	
 	public ParticleSystem FireworkEffect;
 	public AudioClip FireworkSound;
 
@@ -13,7 +14,6 @@ public class GameOverSceneControll : MonoBehaviour {
 	private float timeToNewFirework = 0;
 	
 	void Start() {
-		scoreControll = GameObject.Find( "Score" ).GetComponent<ScoreControll>();
 		newScoreNotification = GameObject.Find( "NewScoreNotification" );
 	}
 
@@ -23,6 +23,7 @@ public class GameOverSceneControll : MonoBehaviour {
 			ShowFireworks();
 		}
 	}
+
 	public void ShowGameOver() {
 
 
@@ -31,11 +32,22 @@ public class GameOverSceneControll : MonoBehaviour {
 
 		if( GameManager.Instance.IsBestScore ) {
 			newScoreNotification.SetActive( true );
+
+			googleAnalytics.LogEvent(new EventHitBuilder()
+			                         .SetEventCategory("Score")
+			                         .SetEventAction("Set Best Score")
+			                         .SetEventValue( GameManager.Instance.Progress.LastScore ));
 		} else {
 			newScoreNotification.SetActive( false );
+
+			googleAnalytics.LogEvent(new EventHitBuilder()
+			                         .SetEventCategory("Score")
+			                         .SetEventAction("Set Lower Score")
+			                         .SetEventValue( GameManager.Instance.Progress.LastScore ));
+
 		}
 
-		GameObject.Find( "FinalScore" ).GetComponent<Text>().text = scoreControll.GetScore().ToString();
+		GameObject.Find( "FinalScore" ).GetComponent<Text>().text = GameManager.Instance.Progress.LastScore.ToString();
 		GameObject.Find( "HighScore" ).GetComponent<Text>().text = GameManager.Instance.Progress.BestScore.ToString();
 
 	}

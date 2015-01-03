@@ -4,7 +4,8 @@ using GooglePlayGames;
 using UnityEngine.SocialPlatforms;
 
 public class GameManagerControll : MonoBehaviour {
-	
+
+	public GoogleAnalyticsV3 googleAnalytics;
 	public GameObject gameScene;
 	public GameObject mainMenuScene;
 	public GameObject gameOverScene;
@@ -35,11 +36,13 @@ public class GameManagerControll : MonoBehaviour {
 		HideAllScenes();
 		mainMenuScene.SetActive( true );
 		mainMenuScene.transform.position = new Vector3(0, 0, -10);
+		googleAnalytics.LogScreen("Main Menu");
 	}
 
 	public void StartGameScene() {
 		HideAllScenes();
 		sceneFadeInOut.ShowFader( gameSceneControll.StartGame );
+		googleAnalytics.LogScreen("Game Scene");
 
 	}
 
@@ -47,6 +50,7 @@ public class GameManagerControll : MonoBehaviour {
 	public void LoadGameOver() {
 		HideAllScenes();
 		gameOverSceneControll.ShowGameOver();
+		googleAnalytics.LogScreen("Game Over");
 	}
 
 

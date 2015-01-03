@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GameSceneControll : MonoBehaviour {
 
+	public GoogleAnalyticsV3 googleAnalytics;
+
 	private GameObject gameHelp;
 	GameObject borders;
 	GameObject floors;
@@ -62,7 +64,7 @@ public class GameSceneControll : MonoBehaviour {
 	}
 
 	
-	public void EndGame() {
+	public void EndGame( int typeOfDeath ) {
 	
 		ShowFloor();
 		scoreControll.Stop();
@@ -70,7 +72,15 @@ public class GameSceneControll : MonoBehaviour {
 		duckControll.Shoot();
 		GameManager.Instance.EndLevel( scoreControll.GetScore() );
 
-
+		if ( typeOfDeath == GameConsts.TypeOfDeathAim ) {
+			googleAnalytics.LogEvent(new EventHitBuilder()
+			                     .SetEventCategory("Game Over")
+		                         .SetEventAction("Aim"));
+		} else {
+			googleAnalytics.LogEvent(new EventHitBuilder()
+			                     .SetEventCategory("Game Over")
+		                         .SetEventAction("Border"));
+		}
 	}
 
 

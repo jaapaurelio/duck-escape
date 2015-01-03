@@ -24,6 +24,16 @@ public class GameManagerControll : MonoBehaviour {
 
 		StartMainMenuScene();
 
+		googleAnalytics.LogEvent(new EventHitBuilder()
+		                         .SetEventCategory("Game")
+		                         .SetEventAction("Open Game"));
+
+	}
+
+	void OnApplicationQuit() {
+		googleAnalytics.LogEvent(new EventHitBuilder()
+		                         .SetEventCategory("Game")
+		                         .SetEventAction("Close Game"));
 	}
 
 	void HideAllScenes() {

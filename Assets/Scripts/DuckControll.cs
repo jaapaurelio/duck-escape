@@ -132,7 +132,7 @@ public class DuckControll : MonoBehaviour {
 			GameSceneControll gameSceneControll = GameObject.Find( "GameScene" ).GetComponent<GameSceneControll>();
 			GameObject.Find( "Shoot" ).GetComponent<ShootControll>().Shoot();
 
-			gameSceneControll.EndGame();
+			gameSceneControll.EndGame( GameConsts.TypeOfDeathBorder );
 
 		}
 		

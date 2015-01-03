@@ -24,4 +24,8 @@ public class GameConsts {
 	public static string AppLinkAndroid = "http://goo.gl/Eo2S0Z";
 	public static string ShareMessage = "Duck Escape is a fun game to play. Try it. " + AppLinkAndroid + " #duckescape";
 
+
+	public const int TypeOfDeathAim = 0;
+	public const int TypeOfDeathBorder = 1;
+
 }

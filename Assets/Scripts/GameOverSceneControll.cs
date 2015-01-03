@@ -35,14 +35,14 @@ public class GameOverSceneControll : MonoBehaviour {
 
 			googleAnalytics.LogEvent(new EventHitBuilder()
 			                         .SetEventCategory("Score")
-			                         .SetEventAction("Set Best Score")
+			                         .SetEventAction("Best Score")
 			                         .SetEventValue( GameManager.Instance.Progress.LastScore ));
 		} else {
 			newScoreNotification.SetActive( false );
 
 			googleAnalytics.LogEvent(new EventHitBuilder()
 			                         .SetEventCategory("Score")
-			                         .SetEventAction("Set Lower Score")
+			                         .SetEventAction("Lower Score")
 			                         .SetEventValue( GameManager.Instance.Progress.LastScore ));
 
 		}

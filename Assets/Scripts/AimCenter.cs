@@ -15,7 +15,7 @@ public class AimCenter : MonoBehaviour {
 
 			GameObject.Find( "Shoot" ).GetComponent<ShootControll>().Shoot();
 
-			gameSceneControll.EndGame();
+			gameSceneControll.EndGame( GameConsts.TypeOfDeathAim );
 			
 		}
 		

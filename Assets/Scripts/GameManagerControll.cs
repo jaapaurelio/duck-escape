@@ -11,6 +11,8 @@ public class GameManagerControll : MonoBehaviour {
 	public GameObject gameOverScene;
 	public GameObject screenFader;
 
+	private int activeSceen = 0;
+
 	SceneFadeInOut sceneFadeInOut;
 	GameSceneControll gameSceneControll;
 	GameOverSceneControll gameOverSceneControll;
@@ -30,6 +32,23 @@ public class GameManagerControll : MonoBehaviour {
 
 	}
 
+	void Update(){
+
+		// Ao clicar no botão Back do telemovel
+		if ( Input.GetKeyDown( KeyCode.Escape ) )  {
+
+			// Game Over
+			if( activeSceen == 2 ) {
+				StartMainMenuScene();
+
+			// Main menu
+			} else if ( activeSceen == 0 ) {
+				Application.Quit();
+			}
+
+		}
+	}
+
 	void OnApplicationQuit() {
 		googleAnalytics.LogEvent(new EventHitBuilder()
 		                         .SetEventCategory("Game")
@@ -47,13 +66,14 @@ public class GameManagerControll : MonoBehaviour {
 		mainMenuScene.SetActive( true );
 		mainMenuScene.transform.position = new Vector3(0, 0, -10);
 		googleAnalytics.LogScreen("Main Menu");
+		activeSceen = 0;
 	}
 
 	public void StartGameScene() {
 		HideAllScenes();
 		sceneFadeInOut.ShowFader( gameSceneControll.StartGame );
 		googleAnalytics.LogScreen("Game Scene");
-
+		activeSceen = 1;
 	}
 
 
@@ -61,6 +81,7 @@ public class GameManagerControll : MonoBehaviour {
 		HideAllScenes();
 		gameOverSceneControll.ShowGameOver();
 		googleAnalytics.LogScreen("Game Over");
+		activeSceen = 2;
 	}
 
 

@@ -5,7 +5,7 @@ public class GameSceneControll : MonoBehaviour {
 
 	public GoogleAnalyticsV3 googleAnalytics;
 
-	private GameObject gameHelp;
+	private GameObject tutorial;
 	GameObject borders;
 	GameObject floors;
 
@@ -16,7 +16,7 @@ public class GameSceneControll : MonoBehaviour {
 
 
 	void Start() {
-		gameHelp = GameObject.Find( "GameHelp" );
+		tutorial = GameObject.Find( "Tutorial" );
 		borders = GameObject.Find( "Borders" );
 		floors = GameObject.Find( "Floors" );
 
@@ -37,7 +37,7 @@ public class GameSceneControll : MonoBehaviour {
 		gameObject.SetActive( true );
 		transform.position = new Vector3(0, 0, -10);
 
-		gameHelp.SetActive( true );
+		tutorial.SetActive( true );
 
 		duckControll.StartGame();
 		aimControll.StartGame();
@@ -59,7 +59,7 @@ public class GameSceneControll : MonoBehaviour {
 	void Update() {
 
 		if ( Input.GetMouseButtonDown (0) ) {
-			gameHelp.SetActive( false );
+			tutorial.SetActive( false );
 		}
 	}
 

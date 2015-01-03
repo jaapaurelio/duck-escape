@@ -47,7 +47,7 @@ MonoBehaviour:
   bundleVersion: 1.8
   dispatchPeriod: 10
   sampleFrequency: 100
-  logLevel: 3
+  logLevel: 0
   anonymizeIP: 0
   dryRun: 0
   sessionTimeout: 120

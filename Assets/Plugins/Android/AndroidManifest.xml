@@ -12,6 +12,9 @@
       <meta-data android:name="unityplayer.ForwardNativeEventsToDalvik" android:value="false" />
     </activity>
     <activity android:name="com.google.games.bridge.NativeBridgeActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+    <activity android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:theme="@android:style/Theme.Translucent" />
     <meta-data android:name="com.google.android.gms.games.APP_ID" android:value="\ 535293148716" />
     <meta-data android:name="com.google.android.gms.appstate.APP_ID" android:value="\ 535293148716" />
     <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />

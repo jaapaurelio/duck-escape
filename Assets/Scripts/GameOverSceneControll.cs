@@ -19,7 +19,7 @@ public class GameOverSceneControll : MonoBehaviour {
 
 	void Update() {
 
-		if( GameManager.Instance.IsBestScore ) {
+		if( GameManager.Instance.Progress.IsBestScore() ) {
 			ShowFireworks();
 		}
 	}
@@ -30,7 +30,7 @@ public class GameOverSceneControll : MonoBehaviour {
 		gameObject.SetActive( true );
 		transform.position = new Vector3(0, 0, -10);
 
-		if( GameManager.Instance.IsBestScore ) {
+		if( GameManager.Instance.Progress.IsBestScore() ) {
 			newScoreNotification.SetActive( true );
 
 			googleAnalytics.LogEvent(new EventHitBuilder()

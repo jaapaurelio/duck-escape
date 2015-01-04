@@ -30,6 +30,16 @@ public class GameManagerControll : MonoBehaviour {
 		                         .SetEventCategory("Game")
 		                         .SetEventAction("Open Game"));
 
+		StartCoroutine( LoginPlayServices() );
+
+	}
+
+	public IEnumerator LoginPlayServices() {
+
+		yield return new WaitForSeconds( GameConsts.TimeToFirstPlayServicesLogin );
+
+		GameManager.Instance.Authenticate();
+
 	}
 
 	void Update(){
@@ -50,10 +60,17 @@ public class GameManagerControll : MonoBehaviour {
 	}
 
 	void OnApplicationQuit() {
+
 		googleAnalytics.LogEvent(new EventHitBuilder()
 		                         .SetEventCategory("Game")
 		                         .SetEventAction("Close Game"));
 	}
+
+	public void OnApplicationPause() {
+		GameManager.Instance.ShowingLeaderboard = false;
+		Debug.Log( "JAAP OnApplicationPause " );
+	}
+
 
 	void HideAllScenes() {
 		gameScene.SetActive( false );

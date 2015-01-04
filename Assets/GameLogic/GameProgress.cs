@@ -4,61 +4,29 @@ using UnityEngine;
 public class GameProgress {
 	private const string PlayerPrefsKey = "duckescape-game-progress";
 
-	// do we have modifications to write to disk/cloud?
-	private bool mDirty = false;
-
 	private int bestScore = 0;
 	private int lastScore = 0;
+	private bool synchronized = true;
 
 	public static GameProgress LoadFromDisk() {
 
-		string s = PlayerPrefs.GetString(PlayerPrefsKey, "");
-
-		if (s == null || s.Trim().Length == 0) {
-			return new GameProgress();
-		}
-
-		return GameProgress.FromString(s);
-	}
-
-
-	public void SaveToDisk() {
-		PlayerPrefs.SetString(PlayerPrefsKey, ConvertToString() );
-		mDirty = false;
-	}
-
-	private String ConvertToString() {
-		return "" + bestScore;
-	}
-	
-	public static GameProgress FromBytes(byte[] b) {
-		return GameProgress.FromString(System.Text.ASCIIEncoding.Default.GetString(b));
-	}
-
-
-	public static GameProgress FromString( string s ) {
 		GameProgress gp = new GameProgress();
 
-		gp.bestScore = System.Convert.ToInt32( s );
+		gp.bestScore = PlayerPrefs.GetInt( "BestScore", 0 );
+		gp.synchronized = PlayerPrefs_GetBool( "Synchronized", true);
 
 		return gp;
 	}
 
-	public void MergeWith(GameProgress other) {
 
+	public void SaveLocal() {
+		PlayerPrefs.SetInt( "BestScore", bestScore );
+		PlayerPrefs_SetBool( "Synchronized", synchronized );
 	}
+
 
 	public byte[] ToBytes() {
 		return System.Text.ASCIIEncoding.Default.GetBytes(ToString());
-	}
-
-	public bool Dirty {
-		get {
-			return mDirty;
-		}
-		set {
-			mDirty = value;
-		}
 	}
 
 	public int BestScore {
@@ -73,19 +41,49 @@ public class GameProgress {
 		}
 	}
 
+	public bool Synchronized {
+		get {
+			return synchronized;
+		}
+		set {
+			synchronized = value;
+		}
+	}
+
+
 	// Return true when is a new best score
-	public bool SetScore( int score ) {
+	public void NewScore( int score ) {
 
 		lastScore = score;
 
 		if( score > bestScore ) {
 			bestScore = score;
-			mDirty = true;
-
-			return true;
 		}
 
-		return false;
-
+		synchronized = false;
 	}
+
+	public bool IsBestScore() {
+		return lastScore == bestScore;
+	}
+
+
+	// Overides ao playerPrefs para conseguirmos guardar booleans
+	private static void PlayerPrefs_SetBool ( string name, bool value) {
+		PlayerPrefs.SetInt( name, value ? 1 : 0 );
+	}
+	
+	private static bool PlayerPrefs_GetBool ( string name ) {
+		return PlayerPrefs.GetInt(name) == 1 ? true : false;
+	}
+	
+	private static bool PlayerPrefs_GetBool ( string name, bool defaultValue ) {
+
+		if ( PlayerPrefs.HasKey( name ) ) {
+			return PlayerPrefs_GetBool( name );
+		}
+
+		return defaultValue;
+	}
+
 }

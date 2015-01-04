@@ -9,9 +9,9 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 
 	private bool mAuthenticating = false;
 
-	private bool isBestScore = false;
-
 	private bool isSoundActive = true;
+
+	private bool showingLeaderboard = false;
 
 	// what is the highest score we have posted to the leaderboard?
 	private int mHighestPostedScore = 0;
@@ -39,74 +39,48 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 
 	// Data was successfully loaded from the cloud
 	public void OnStateLoaded(bool success, int slot, byte[] data) {
-		Debug.Log("Cloud load callback, success=" + success);
-		if (success) {
-			ProcessCloudData(data);
-		} else {
-			Debug.LogWarning("Failed to load from cloud. Network problems?");
-		}
-		
-		// regardless of success, this is the end of the auth process
-		mAuthenticating = false;
-		
-		// report any progress we have to report
-		ReportAllProgress();
+		// TODO Será utilizado quando guardar online
 	}
 	
 	// Conflict in cloud data occurred
 	public byte[] OnStateConflict(int slot, byte[] local, byte[] server) {
-		Debug.Log("Conflict callback called. Resolving conflict.");
-		
-		// decode byte arrays into game progress and merge them
-		GameProgress localProgress = local == null ?
-			new GameProgress() : GameProgress.FromBytes(local);
-		GameProgress serverProgress = server == null ?
-			new GameProgress() : GameProgress.FromBytes(server);
-		localProgress.MergeWith(serverProgress);
-		
-		// resolve conflict
-		return localProgress.ToBytes();
+
+		// TODO Será utilizado quando guardar online
+		return null;
 	}
 	
 	public void OnStateSaved(bool success, int slot) {
-		if (!success) {
-			Debug.LogWarning("Failed to save state to the cloud.");
-			
-			// try to save later:
-			mProgress.Dirty = true;
-		}
-	}
-
-	void ProcessCloudData(byte[] cloudData) {
-		if (cloudData == null) {
-			Debug.Log("No data saved to the cloud yet...");
-			return;
-		}
-		Debug.Log("Decoding cloud data from bytes.");
-		GameProgress progress = GameProgress.FromBytes(cloudData);
-		Debug.Log("Merging with existing game progress.");
-		mProgress.MergeWith(progress);
-	}
-
-	void ReportAllProgress() {
-		/*FlushAchievements();
-		UnlockProgressBasedAchievements();
-		PostToLeaderboard();
-		SaveToCloud();*/
+		// TODO Será utilizado quando guardar online
 	}
 
 
 	public void PostToLeaderboard( int score ) {
 
+		Debug.Log( "Entra no PostToLeaderboard.");
+		Debug.Log( "Score " + score );
+		Debug.Log( "mHighestPostedScore: " + mHighestPostedScore );
+		Debug.Log( "Authenticated " + Authenticated );
+
+
 		if (Authenticated && score > mHighestPostedScore) {
+
+			Debug.Log( "Faz o ReportScore" );
 			// post score to the leaderboard
-			Social.ReportScore(score, GameIds.LeaderboardId, (bool success) => {});
+			Social.ReportScore(score, GameIds.LeaderboardId, (bool success) => {
+
+				Debug.Log( "Report score: " + success );
+				if( success ) {
+					mProgress.Synchronized = true;
+				}
+			});
+
 			mHighestPostedScore = score;
 		}
 	}
 
 	#if UNITY_ANDROID || UNITY_IOS
 	public void Authenticate() {
+
 		if (Authenticated || mAuthenticating) {
 			Debug.LogWarning("Ignoring repeated call to Authenticate().");
 			return;
@@ -117,10 +91,7 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 		Social.localUser.Authenticate((bool success) => {
 			mAuthenticating = false;
 			if (success) {
-				// if we signed in successfully, load data from cloud
-
-				// TODO Carregar dados guardados
-				//LoadFromCloud();
+				updateLeaderboardScore();
 			} else {
 				// no need to show error message (error messages are shown automatically
 				// by plugin)
@@ -134,6 +105,14 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 	}
 	#endif
 
+	private void updateLeaderboardScore(){
+
+		if( !mProgress.Synchronized ) {
+			PostToLeaderboard( mProgress.BestScore );
+		}
+
+	}
+
 	public bool Authenticated {
 		get {
 			return Social.Active.localUser.authenticated;
@@ -141,12 +120,8 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 	}
 
 	public void EndLevel( int score ) {
-		isBestScore = mProgress.SetScore( score );
-
-		if( mProgress.Dirty ) {
-			mProgress.SaveToDisk();
-		}
-
+		mProgress.NewScore( score );
+		mProgress.SaveLocal();
 		PostToLeaderboard( score );
 	}
 
@@ -156,11 +131,6 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 		}
 	}
 
-	public bool IsBestScore {
-		get {
-			return isBestScore;
-		}
-	}
 
 	public bool IsSoundActive {
 		get {
@@ -171,12 +141,25 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 		}
 	}
 
+	public bool ShowingLeaderboard {
+		set {
+			showingLeaderboard = value;
+		}
+	}
+
+	
 	public void ShowLeaderboardUI() {
+
 		if (Authenticated) {
-			Social.ShowLeaderboardUI();
+			Debug.Log( "JAAP showingLeaderboard "+ showingLeaderboard );
+			if ( !showingLeaderboard ) {
+				showingLeaderboard = true;
+				Social.ShowLeaderboardUI();
+			}
 		} else {
 			Authenticate();
 		}
+
 	}
 	
 }

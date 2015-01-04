@@ -68,7 +68,6 @@ public class GameManagerControll : MonoBehaviour {
 
 	public void OnApplicationPause() {
 		GameManager.Instance.ShowingLeaderboard = false;
-		Debug.Log( "JAAP OnApplicationPause " );
 	}
 
 

@@ -56,19 +56,10 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 
 	public void PostToLeaderboard( int score ) {
 
-		Debug.Log( "Entra no PostToLeaderboard.");
-		Debug.Log( "Score " + score );
-		Debug.Log( "mHighestPostedScore: " + mHighestPostedScore );
-		Debug.Log( "Authenticated " + Authenticated );
-
-
 		if (Authenticated && score > mHighestPostedScore) {
 
-			Debug.Log( "Faz o ReportScore" );
 			// post score to the leaderboard
 			Social.ReportScore(score, GameIds.LeaderboardId, (bool success) => {
-
-				Debug.Log( "Report score: " + success );
 				if( success ) {
 					mProgress.Synchronized = true;
 				}
@@ -151,7 +142,6 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 	public void ShowLeaderboardUI() {
 
 		if (Authenticated) {
-			Debug.Log( "JAAP showingLeaderboard "+ showingLeaderboard );
 			if ( !showingLeaderboard ) {
 				showingLeaderboard = true;
 				Social.ShowLeaderboardUI();

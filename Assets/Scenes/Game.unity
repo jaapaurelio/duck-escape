@@ -1030,6 +1030,50 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!1001 &410762706
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: eb5b47b08880548c795ced5f38c9e001, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.79012108
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: eb5b47b08880548c795ced5f38c9e001, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -7.8589859
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: eb5b47b08880548c795ced5f38c9e001, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -1.81105065
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: eb5b47b08880548c795ced5f38c9e001, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: eb5b47b08880548c795ced5f38c9e001, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: eb5b47b08880548c795ced5f38c9e001, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: eb5b47b08880548c795ced5f38c9e001, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: eb5b47b08880548c795ced5f38c9e001, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: eb5b47b08880548c795ced5f38c9e001, type: 2}
+  m_RootGameObject: {fileID: 1444812361}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &460627947
 GameObject:
   m_ObjectHideFlags: 0
@@ -1383,50 +1427,6 @@ SpriteRenderer:
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300064, guid: befee96968e834e21b3e130e3dd7bd97, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!1001 &725452507
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: eb5b47b08880548c795ced5f38c9e001, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 2.79012108
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: eb5b47b08880548c795ced5f38c9e001, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -7.8589859
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: eb5b47b08880548c795ced5f38c9e001, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -1.81105065
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: eb5b47b08880548c795ced5f38c9e001, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: eb5b47b08880548c795ced5f38c9e001, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: eb5b47b08880548c795ced5f38c9e001, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: eb5b47b08880548c795ced5f38c9e001, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: eb5b47b08880548c795ced5f38c9e001, type: 2}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: eb5b47b08880548c795ced5f38c9e001, type: 2}
-  m_RootGameObject: {fileID: 1444812361}
-  m_IsPrefabParent: 0
-  m_IsExploded: 1
 --- !u!1 &735249888
 GameObject:
   m_ObjectHideFlags: 0
@@ -3074,7 +3074,7 @@ MonoBehaviour:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100000, guid: eb5b47b08880548c795ced5f38c9e001, type: 2}
-  m_PrefabInternal: {fileID: 725452507}
+  m_PrefabInternal: {fileID: 410762706}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1444812363}
@@ -3091,7 +3091,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400000, guid: eb5b47b08880548c795ced5f38c9e001,
     type: 2}
-  m_PrefabInternal: {fileID: 725452507}
+  m_PrefabInternal: {fileID: 410762706}
   m_GameObject: {fileID: 1444812361}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -3103,7 +3103,7 @@ MonoBehaviour:
   otherTrackingCode: UA-58151786-1
   productName: Duck Escape
   bundleIdentifier: com.creativebackyard.duckescape
-  bundleVersion: 1.10
+  bundleVersion: 1.11
   dispatchPeriod: 10
   sampleFrequency: 100
   logLevel: 0
@@ -3114,7 +3114,7 @@ MonoBehaviour:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400000, guid: eb5b47b08880548c795ced5f38c9e001, type: 2}
-  m_PrefabInternal: {fileID: 725452507}
+  m_PrefabInternal: {fileID: 410762706}
   m_GameObject: {fileID: 1444812361}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.79012108, y: -7.8589859, z: -1.81105065}

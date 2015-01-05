@@ -44,7 +44,7 @@ MonoBehaviour:
   otherTrackingCode: UA-58151786-1
   productName: Duck Escape
   bundleIdentifier: com.creativebackyard.duckescape
-  bundleVersion: 1.10
+  bundleVersion: 1.11
   dispatchPeriod: 10
   sampleFrequency: 100
   logLevel: 0

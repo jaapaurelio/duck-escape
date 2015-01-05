@@ -29,4 +29,8 @@ public class GameConsts {
 	public const int TypeOfDeathAim = 0;
 	public const int TypeOfDeathBorder = 1;
 
+	// Ads
+	public static string AdIdBanner = "ca-app-pub-1300480826628637/7593711709";
+	public static string AdIdGameOver = "ca-app-pub-1300480826628637/3663039708";
+	public static int NumberOfGamesToShowAds = 10;
 }

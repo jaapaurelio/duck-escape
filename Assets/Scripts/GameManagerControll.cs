@@ -2,6 +2,7 @@
 using System.Collections;
 using GooglePlayGames;
 using UnityEngine.SocialPlatforms;
+using GoogleMobileAds.Api;
 
 public class GameManagerControll : MonoBehaviour {
 
@@ -11,7 +12,12 @@ public class GameManagerControll : MonoBehaviour {
 	public GameObject gameOverScene;
 	public GameObject screenFader;
 
+	private BannerView smallBannerBottom;
+	private InterstitialAd interstitialBanner;
+
 	private int activeSceen = 0;
+	
+	private int numberOfGamesLeftToShowAd = GameConsts.NumberOfGamesToShowAds;
 
 	SceneFadeInOut sceneFadeInOut;
 	GameSceneControll gameSceneControll;
@@ -31,6 +37,33 @@ public class GameManagerControll : MonoBehaviour {
 		                         .SetEventAction("Open Game"));
 
 		StartCoroutine( LoginPlayServices() );
+
+		CreatSmallBanner();
+
+	}
+
+	void CreatSmallBanner() {
+
+		smallBannerBottom = new BannerView(
+			GameConsts.AdIdBanner, AdSize.SmartBanner, AdPosition.Bottom );
+
+		// Create an empty ad request.
+		AdRequest request = new AdRequest.Builder()
+			.Build();
+		
+		// Load the banner with the request.
+		smallBannerBottom.LoadAd(request);
+
+	}
+
+	void CreatFullScreenBanner() {
+
+		interstitialBanner = new InterstitialAd( GameConsts.AdIdGameOver );
+		// Create an empty ad request.
+		AdRequest request = new AdRequest.Builder().Build();
+
+		// Load the interstitial with the request.
+		interstitialBanner.LoadAd(request);
 
 	}
 
@@ -90,6 +123,14 @@ public class GameManagerControll : MonoBehaviour {
 		sceneFadeInOut.ShowFader( gameSceneControll.StartGame );
 		googleAnalytics.LogScreen("Game Scene");
 		activeSceen = 1;
+
+		smallBannerBottom.Show();
+
+		// Prepara a publicidade para ser mostrada no game over
+		numberOfGamesLeftToShowAd--;
+		if( numberOfGamesLeftToShowAd == 0 ) {
+			CreatFullScreenBanner();
+		}
 	}
 
 
@@ -98,7 +139,17 @@ public class GameManagerControll : MonoBehaviour {
 		gameOverSceneControll.ShowGameOver();
 		googleAnalytics.LogScreen("Game Over");
 		activeSceen = 2;
-	}
 
+		smallBannerBottom.Hide();
+
+		if( numberOfGamesLeftToShowAd == 0 ) {
+			numberOfGamesLeftToShowAd = GameConsts.NumberOfGamesToShowAds;
+
+			if (interstitialBanner.IsLoaded() ) {
+				interstitialBanner.Show();
+			}
+		}
+
+	}
 
 }

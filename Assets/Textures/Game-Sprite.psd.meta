@@ -31,12 +31,17 @@ TextureImporter:
     21300052: ShareTwitterBtn
     21300054: ShareFacebookBtn
     21300056: Tutorial
-    21300058: Game-Sprite_28
+    21300058: TutorialHoldLabel
     21300060: BackBtn
     21300062: DuckBody
     21300064: Aim
     21300066: AimCenter
     21300068: SoundBtn
+    21300070: TutorialTapLabel
+    21300072: TutorialHand
+    21300074: TutorialHoldEffect1
+    21300076: TutorialHoldEffect2
+    21300078: TutorialTapEffect
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -348,13 +353,63 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Tutorial
+    - name: TutorialTapLabel
       rect:
         serializedVersion: 2
-        x: 6
-        y: 155
-        width: 225
-        height: 89
+        x: 35
+        y: 285
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TutorialHoldLabel
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 285
+        width: 19
+        height: 8
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TutorialHand
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 268
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TutorialHoldEffect1
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 273
+        width: 13
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TutorialHoldEffect2
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 272
+        width: 7
+        height: 3
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TutorialTapEffect
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 273
+        width: 7
+        height: 4
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

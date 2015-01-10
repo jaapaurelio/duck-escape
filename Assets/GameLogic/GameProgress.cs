@@ -24,6 +24,14 @@ public class GameProgress {
 		PlayerPrefs_SetBool( "Synchronized", synchronized );
 	}
 
+	public bool SoundEnabled(){
+		return PlayerPrefs_GetBool( "SoundEnabled", true );
+	}
+
+	public void SetSoundEnabled( bool enabled ) {
+		PlayerPrefs_SetBool( "SoundEnabled", enabled );
+	}
+
 
 	public byte[] ToBytes() {
 		return System.Text.ASCIIEncoding.Default.GetBytes(ToString());

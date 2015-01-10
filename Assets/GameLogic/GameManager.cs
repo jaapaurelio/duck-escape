@@ -9,7 +9,7 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 
 	private bool mAuthenticating = false;
 
-	private bool isSoundActive = true;
+	private bool isSoundEnabled = true;
 
 	private bool showingLeaderboard = false;
 
@@ -122,15 +122,6 @@ public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
 		}
 	}
 
-
-	public bool IsSoundActive {
-		get {
-			return isSoundActive;
-		}
-		set {
-			isSoundActive = value;
-		}
-	}
 
 	public bool ShowingLeaderboard {
 		set {

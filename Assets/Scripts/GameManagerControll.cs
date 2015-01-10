@@ -124,8 +124,6 @@ public class GameManagerControll : MonoBehaviour {
 		googleAnalytics.LogScreen("Game Scene");
 		activeSceen = 1;
 
-		smallBannerBottom.Show();
-
 		// Prepara a publicidade para ser mostrada no game over
 		numberOfGamesLeftToShowAd--;
 		if( numberOfGamesLeftToShowAd == 0 ) {
@@ -139,8 +137,6 @@ public class GameManagerControll : MonoBehaviour {
 		gameOverSceneControll.ShowGameOver();
 		googleAnalytics.LogScreen("Game Over");
 		activeSceen = 2;
-
-		smallBannerBottom.Hide();
 
 		if( numberOfGamesLeftToShowAd == 0 ) {
 			numberOfGamesLeftToShowAd = GameConsts.NumberOfGamesToShowAds;

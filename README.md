@@ -1,3 +1,5 @@
 # Duck Escape #
 
-Tu és um Pato e como tal tens que fugir da mira que te segue. Aguenta o máximo possivel e partilha os resultados com os teus amigos.
+https://play.google.com/store/apps/details?id=com.creativebackyard.duckescape
+
+Android game created with Unity3D 4.6

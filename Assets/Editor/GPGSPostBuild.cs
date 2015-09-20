@@ -16,7 +16,7 @@ public static class GPGSPostBuild {
 
     [PostProcessBuild]
     public static void OnPostprocessBuild(BuildTarget target, string pathToBuiltProject) {
-        if (target != BuildTarget.iPhone) {
+        if (target != BuildTarget.iOS) {
             return;
         }
 

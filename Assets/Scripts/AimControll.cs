@@ -45,7 +45,7 @@ public class AimControll : MonoBehaviour {
 
 		// Aplica a força para mover a mira
 		Vector2 direction = new Vector2( 1, 1 ).normalized;
-		rigidbody2D.velocity = direction * speed;
+		GetComponent<Rigidbody2D>().velocity = direction * speed;
 
 	}
 
@@ -62,7 +62,7 @@ public class AimControll : MonoBehaviour {
 		
 		Vector2 direction = ( target - gameObject.transform.position ).normalized;
 				
-		rigidbody2D.velocity = direction * ( speed + GameConsts.AimFollowingDuckIncreaser );
+		GetComponent<Rigidbody2D>().velocity = direction * ( speed + GameConsts.AimFollowingDuckIncreaser );
 
 	}
 
@@ -72,8 +72,8 @@ public class AimControll : MonoBehaviour {
 		
 		float yForce = 0f;
 		float xForce = 0f;
-		float xOriginal = gameObject.rigidbody2D.velocity.x;
-		float yOriginal = gameObject.rigidbody2D.velocity.y;
+		float xOriginal = gameObject.GetComponent<Rigidbody2D>().velocity.x;
+		float yOriginal = gameObject.GetComponent<Rigidbody2D>().velocity.y;
 		
 		if( colliderName == "BorderTop" || colliderName == "BorderBottom" ) {
 			
@@ -118,7 +118,7 @@ public class AimControll : MonoBehaviour {
 		
 		Vector2 direction = new Vector2( xForce, yForce ).normalized;
 
-		rigidbody2D.velocity = direction * speed; 
+		GetComponent<Rigidbody2D>().velocity = direction * speed; 
 
 
 

@@ -16,7 +16,7 @@ public class ScoreControll : MonoBehaviour {
 	GameObject levelUpLabel;
 	GameSceneControll gameSceneControll;
 
-	public void Start() {
+	public void Awake() {
 
 		levelUpLabel = GameObject.Find( "LevelUpLabel" );
 		gameSceneControll = GameObject.Find( "GameScene" ).GetComponent<GameSceneControll>();

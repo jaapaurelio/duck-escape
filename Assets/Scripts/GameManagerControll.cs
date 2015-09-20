@@ -30,8 +30,6 @@ public class GameManagerControll : MonoBehaviour {
 		gameSceneControll = gameScene.GetComponent<GameSceneControll>();
 		gameOverSceneControll = gameOverScene.GetComponent<GameOverSceneControll>();
 
-		StartMainMenuScene();
-
 		googleAnalytics.LogEvent(new EventHitBuilder()
 		                         .SetEventCategory("Game")
 		                         .SetEventAction("Open Game"));
@@ -39,6 +37,8 @@ public class GameManagerControll : MonoBehaviour {
 		StartCoroutine( LoginPlayServices() );
 
 		CreatSmallBanner();
+
+		StartMainMenuScene();
 
 	}
 

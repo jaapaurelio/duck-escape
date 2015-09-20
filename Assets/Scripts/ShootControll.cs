@@ -5,8 +5,8 @@ public class ShootControll : MonoBehaviour {
 
 	void Awake () {
 		// Set the texture so that it is the the size of the screen and covers it.
-		guiTexture.pixelInset = new Rect(0f, 0f, Screen.width, Screen.height);
-		guiTexture.enabled = false;
+		GetComponent<GUITexture>().pixelInset = new Rect(0f, 0f, Screen.width, Screen.height);
+		GetComponent<GUITexture>().enabled = false;
 		
 	}
 
@@ -17,11 +17,11 @@ public class ShootControll : MonoBehaviour {
 	// Mostra o ecrã branco 
 	public IEnumerator ShowShoot() {
 
-		guiTexture.enabled = true;
+		GetComponent<GUITexture>().enabled = true;
 
 		yield return new WaitForSeconds(0.1f);
 
-		guiTexture.enabled = false;
+		GetComponent<GUITexture>().enabled = false;
 
 	}
 

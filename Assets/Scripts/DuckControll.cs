@@ -23,7 +23,7 @@ public class DuckControll : MonoBehaviour {
 		transform.position = new Vector3( -1f, -0.5f, 0 );
 		transform.localEulerAngles = new Vector3( 0, 0, 0 );
 
-		rigidbody2D.gravityScale = 0;
+		GetComponent<Rigidbody2D>().gravityScale = 0;
 		started = true;
 
 		speed = GameConsts.DuckInitialSpeed;
@@ -104,14 +104,14 @@ public class DuckControll : MonoBehaviour {
 			applySpeed = speed + GameConsts.DuckSpeedIncrease;
 		}
 
-		rigidbody2D.velocity = direction * applySpeed;
+		GetComponent<Rigidbody2D>().velocity = direction * applySpeed;
 	}
 
 	public void Shoot() {
 
 		started = false;
-		rigidbody2D.AddTorque( 0.3f );
-		rigidbody2D.gravityScale = 0.5f;
+		GetComponent<Rigidbody2D>().AddTorque( 0.3f );
+		GetComponent<Rigidbody2D>().gravityScale = 0.5f;
 		animator.SetBool( "goFast", false );
 	}
 

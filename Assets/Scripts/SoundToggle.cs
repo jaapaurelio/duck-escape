@@ -15,10 +15,10 @@ public class SoundToggle : Button {
 
 		if ( !GameManager.Instance.Progress.SoundEnabled() ) {
 			AudioListener.volume = 0;
-			soundMute.renderer.enabled = true;
+			soundMute.GetComponent<Renderer>().enabled = true;
 		} else {
 			AudioListener.volume = 1;
-			soundMute.renderer.enabled = false;
+			soundMute.GetComponent<Renderer>().enabled = false;
 		}
 
 	}
@@ -28,11 +28,11 @@ public class SoundToggle : Button {
 		if ( GameManager.Instance.Progress.SoundEnabled() ) {
 			AudioListener.volume = 0;
 			GameManager.Instance.Progress.SetSoundEnabled( false );
-			soundMute.renderer.enabled = true;
+			soundMute.GetComponent<Renderer>().enabled = true;
 		} else {
 			AudioListener.volume = 1;
 			GameManager.Instance.Progress.SetSoundEnabled( true );
-			soundMute.renderer.enabled = false;
+			soundMute.GetComponent<Renderer>().enabled = false;
 		}
 	}
 	

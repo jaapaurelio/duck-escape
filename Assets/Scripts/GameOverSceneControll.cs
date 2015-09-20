@@ -13,7 +13,7 @@ public class GameOverSceneControll : MonoBehaviour {
 
 	private float timeToNewFirework = 0;
 	
-	void Start() {
+	void Awake() {
 		newScoreNotification = GameObject.Find( "NewScoreNotification" );
 	}
 

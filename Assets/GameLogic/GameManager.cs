@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GooglePlayGames;
 
-public class GameManager : GooglePlayGames.BasicApi.OnStateLoadedListener {
+public class GameManager {
 	private static GameManager sInstance = new GameManager();
 	private GameProgress mProgress;
 
